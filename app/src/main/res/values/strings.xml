@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ProjectZero</string>
+    <string name="project_zero">Project Zero</string>
+    <string name="vous_vous_appretez_a_entrer_dans_une_aventure_ou_seul_votre_reflexion_pourra_vous_sauvez_la_vie_vous_allez_devoir_vous_chaper_de_l_endroit_ou_vous_vous_trouvez_mais_attention_vos_actions_sont_compt_s">Vous vous appretez a entrer dans une aventure ou seul votre reflexion pourra vous sauvez la vie. Vous allez devoir vous échaper de l endroit ou vous vous trouvez, mais attention vos actions sont comptés...</string>
+    <string name="entrer">Entrer</string>
+    <string name="entrer_dans_l_aventure">Entrer dans l\'aventure</string>
 </resources>
