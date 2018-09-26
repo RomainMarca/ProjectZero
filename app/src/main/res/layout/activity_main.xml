@@ -14,7 +14,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:text="@string/project_zero"
         android:textAlignment="center"
         android:textSize="40sp"
@@ -26,12 +26,14 @@
         android:id="@+id/button_enter"
         android:layout_width="230dp"
         android:layout_height="80dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/entrer"
+        app:layout_constraintBottom_toTopOf="@+id/button_rules"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_intro" />
@@ -39,8 +41,7 @@
     <TextView
         android:id="@+id/text_description"
         android:layout_width="337dp"
-        android:layout_height="192dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="245dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -50,15 +51,14 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/button_realenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_enter" />
+        app:layout_constraintTop_toBottomOf="@+id/text_intro" />
 
     <Button
         android:id="@+id/button_realenter"
         android:layout_width="294dp"
-        android:layout_height="120dp"
+        android:layout_height="85dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -69,5 +69,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_rules"
+        android:layout_width="298dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Règles du jeu"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/button_realenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_description" />
 
 </android.support.constraint.ConstraintLayout>

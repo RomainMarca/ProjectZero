@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/room1"
+    android:background="@drawable/room1_1"
     tools:context=".Room1">
 
     <TextView
@@ -19,6 +19,7 @@
         android:gravity="center"
         android:textColor="#000000"
         android:textSize="25sp"
+        android:background="@drawable/fondtextview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -30,6 +30,7 @@ public class Room1 extends AppCompatActivity {
         imageAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //down action level
                 Action.setCompteurAction(Action.getCompteurAction()-1);
                 textAction.setText(String.valueOf(Action.getCompteurAction()));
 
@@ -49,7 +50,7 @@ public class Room1 extends AppCompatActivity {
 
 
                 //Verification if player's dead.
-                if (Action.getCompteurAction()==0){
+                if (Action.getCompteurAction()<0){
 
                     Intent goTodead = new Intent(Room1.this , DeadActivity.class);
                     Room1.this.startActivity(goTodead);

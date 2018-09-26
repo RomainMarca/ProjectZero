@@ -8,4 +8,6 @@
     <string name="retour_menu">Retour menu</string>
     <string name="une_lourde_chaine_ferm_d_un_gros_cadena_a_serrure">La porte est fermée d\'une lourde chaine fermée d\'un gros cadena à serrure.</string>
     <string name="ToastIntro">Vous vous reveillez dans une étrange cage aux épais barreaux, dans ce qui semble etre une vieille cave. En un coup d\'oeil vous comprennez etre séquestré dans ce lieu sordide et apparemment vous n\'êtes pas le premier.</string>
+    <string name="_5">5</string>
+    <string name="en_bas_de_l_cran_il_y_a_le_compteur_d_action_si_il_atteint_0_la_partie_est_perdu">En bas de l\'écran il y a le compteur d\'action. S\'il atteint 0 la partie est perdu.</string>
 </resources>

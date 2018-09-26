@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Room1" />
-        <activity android:name=".DeadActivity"></activity>
+        <activity android:name=".DeadActivity" />
+        <activity android:name=".RulesActivity"></activity>
     </application>
 
 </manifest>
