@@ -18,10 +18,6 @@ public class Compteur {
         this.compteurAction=compteurAction;
     }
 
-    public int MethCompteur(){
-        return this.compteurAction;
-    }
-
 }
 
 

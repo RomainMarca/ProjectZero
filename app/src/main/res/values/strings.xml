@@ -6,8 +6,11 @@
     <string name="entrer_dans_l_aventure">Entrer dans l\'aventure</string>
     <string name="c_est_ainsi_que_plus_personne_n_entendit_parler_de_vous">C\'est ainsi que plus personne n\'entendit parler de vous...</string>
     <string name="retour_menu">Retour menu</string>
-    <string name="une_lourde_chaine_ferm_d_un_gros_cadena_a_serrure">La porte est fermée d\'une lourde chaine fermée d\'un gros cadena à serrure.</string>
+    <string name="PorteBarreau">La porte est fermée d\'une lourde chaine fermée d\'un gros cadena à serrure.</string>
     <string name="ToastIntro">Vous vous reveillez dans une étrange cage aux épais barreaux, dans ce qui semble etre une vieille cave. En un coup d\'oeil vous comprennez etre séquestré dans ce lieu sordide et apparemment vous n\'êtes pas le premier.</string>
-    <string name="_5">5</string>
     <string name="en_bas_de_l_cran_il_y_a_le_compteur_d_action_si_il_atteint_0_la_partie_est_perdu">En bas de l\'écran il y a le compteur d\'action. S\'il atteint 0 la partie est perdu.</string>
+    <string name="_5">5</string>
+    <string name="les_icons_observation_permettent_d_observer_un_objet_ou_autres_ses_icons_ne_demande_pas_de_point_d_action">Les icons Observation, permettent d\'observer un objet ou autres. Ses icons ne demande pas de point d\'action.</string>
+    <string name="les_incons_action_permettent_d_interagir_avec_des_objets_ou_autres_les_icons_action_utilise_des_points_d_action">Les incons Action permettent d\'interagir avec des objets ou autres. Les icons Action utilise des points d\'action.</string>
+    <string name="EchecPorteBarreau">Le cadena est trop solide et vous ne parvenez pas à l\'ouvrir</string>
 </resources>
