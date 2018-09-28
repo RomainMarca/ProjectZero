@@ -26,33 +26,33 @@ public class Room1 extends AppCompatActivity {
 
 
         final ImageView imageAction = findViewById(R.id.image_action);
-        final ImageView imageObsPorte = findViewById(R.id.image_obsPorte);
+        final ImageView imageObs = findViewById(R.id.image_obsPorte);
 
         //view on Action counter
         final TextView textCounter = (TextView) findViewById(R.id.text_action);
         textCounter.setText(String.valueOf(compteur));
 
-        final TextView textEventPorte = findViewById(R.id.text_eventporte);
+        final TextView textEvent = findViewById(R.id.text_eventporte);
         final Button X = findViewById(R.id.button_hollow);
 
         //click on observation door
-        imageObsPorte.setOnClickListener(new View.OnClickListener() {
+        imageObs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //Event
 
 
-                textEventPorte.setVisibility(View.VISIBLE);
+                textEvent.setVisibility(View.VISIBLE);
                 X.setVisibility(View.VISIBLE);
-                textEventPorte.setText(R.string.PorteBarreau);
+                textEvent.setText(R.string.PorteBarreau);
 
                 X.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        textEventPorte.setVisibility(View.INVISIBLE);
+                        textEvent.setVisibility(View.INVISIBLE);
                         X.setVisibility(View.INVISIBLE);
-                        imageObsPorte.setVisibility(View.INVISIBLE);
+                        imageObs.setVisibility(View.INVISIBLE);
                         imageAction.setVisibility(View.VISIBLE);
                     }
                 });
@@ -74,14 +74,14 @@ public class Room1 extends AppCompatActivity {
 
 
                 //Event
-                textEventPorte.setVisibility(View.VISIBLE);
+                textEvent.setVisibility(View.VISIBLE);
                 X.setVisibility(View.VISIBLE);
-                textEventPorte.setText(R.string.EchecPorteBarreau);
+                textEvent.setText(R.string.EchecPorteBarreau);
 
                 X.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        textEventPorte.setVisibility(View.INVISIBLE);
+                        textEvent.setVisibility(View.INVISIBLE);
                         X.setVisibility(View.INVISIBLE);
 
                     }
