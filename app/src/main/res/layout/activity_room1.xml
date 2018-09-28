@@ -24,21 +24,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/image_action"
-        android:layout_width="35dp"
-        android:layout_height="39dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="110dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/buttonaction" />
-
     <TextView
         android:id="@+id/text_eventporte"
         android:layout_width="155dp"
@@ -71,15 +56,17 @@
         app:layout_constraintEnd_toEndOf="@+id/text_eventporte" />
 
     <ImageView
-        android:id="@+id/image_obsPorte"
-        android:layout_width="36dp"
-        android:layout_height="44dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="108dp"
+        android:id="@+id/image_empty"
+        android:layout_width="38dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="105dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/buttonvue" />
+        app:srcCompat="@android:color/transparent" />
 
 </android.support.constraint.ConstraintLayout>

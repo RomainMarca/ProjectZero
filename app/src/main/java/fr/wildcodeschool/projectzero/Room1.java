@@ -2,6 +2,7 @@ package fr.wildcodeschool.projectzero;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 public class Room1 extends AppCompatActivity {
 
 
+
     private int compteur = 5;
 
     @Override
@@ -23,10 +25,10 @@ public class Room1 extends AppCompatActivity {
 
         Toast.makeText(this, R.string.ToastIntro, Toast.LENGTH_LONG).show();
 
-
-
-        final ImageView imageAction = findViewById(R.id.image_action);
-        final ImageView imageObs = findViewById(R.id.image_obsPorte);
+        final Drawable ImageAction = getResources().getDrawable(R.drawable.buttonaction);
+        Drawable ImageObs = getResources().getDrawable(R.drawable.buttonvue);
+        final ImageView ImageEmpty = findViewById(R.id.image_empty);
+        ImageEmpty.setImageDrawable(ImageObs);
 
         //view on Action counter
         final TextView textCounter = (TextView) findViewById(R.id.text_action);
@@ -36,31 +38,30 @@ public class Room1 extends AppCompatActivity {
         final Button X = findViewById(R.id.button_hollow);
 
         //click on observation door
-        imageObs.setOnClickListener(new View.OnClickListener() {
+        ImageEmpty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //Event
-
-
                 textEvent.setVisibility(View.VISIBLE);
                 X.setVisibility(View.VISIBLE);
                 textEvent.setText(R.string.PorteBarreau);
+
+                ImageEmpty.setImageDrawable(ImageAction);
 
                 X.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         textEvent.setVisibility(View.INVISIBLE);
                         X.setVisibility(View.INVISIBLE);
-                        imageObs.setVisibility(View.INVISIBLE);
-                        imageAction.setVisibility(View.VISIBLE);
+
                     }
                 });
             }
         });
 
         //cilck on action door
-        imageAction.setOnClickListener(new View.OnClickListener() {
+        ImageEmpty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Method drop counter and verify if dead
@@ -73,7 +74,7 @@ public class Room1 extends AppCompatActivity {
                 //End Method drop counter and verify if dead
 
 
-                //Event
+                //Show and close textEvent
                 textEvent.setVisibility(View.VISIBLE);
                 X.setVisibility(View.VISIBLE);
                 textEvent.setText(R.string.EchecPorteBarreau);
@@ -83,6 +84,7 @@ public class Room1 extends AppCompatActivity {
                     public void onClick(View v) {
                         textEvent.setVisibility(View.INVISIBLE);
                         X.setVisibility(View.INVISIBLE);
+                //End show and close textEvent
 
                     }
                 });
