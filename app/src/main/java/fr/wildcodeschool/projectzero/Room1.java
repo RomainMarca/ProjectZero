@@ -25,24 +25,27 @@ public class Room1 extends AppCompatActivity {
 
 
 
-        final ImageView imageAction = findViewById(R.id.image_action);
-        final ImageView imageObs = findViewById(R.id.image_obsPorte);
+        final ImageView imgActionDoor = findViewById(R.id.image_actionPorte);
+        final ImageView imgObsDoor = findViewById(R.id.image_obsPorte);
+        final ImageView imgActionBed = findViewById(R.id.image_actionbed);
+        final ImageView imgObsBed = findViewById(R.id.image_obsbed);
 
         //view on Action counter
         final TextView textCounter = (TextView) findViewById(R.id.text_action);
         textCounter.setText(String.valueOf(compteur));
 
+        //Text Event and button X
         final TextView textEvent = findViewById(R.id.text_eventporte);
         final Button X = findViewById(R.id.button_hollow);
 
         //click on observation door
-        imageObs.setOnClickListener(new View.OnClickListener() {
+        imgObsDoor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //Event
+                imgObsDoor.setVisibility(View.INVISIBLE);
 
-
+                // Show and close textEvent
                 textEvent.setVisibility(View.VISIBLE);
                 X.setVisibility(View.VISIBLE);
                 textEvent.setText(R.string.PorteBarreau);
@@ -52,17 +55,44 @@ public class Room1 extends AppCompatActivity {
                     public void onClick(View v) {
                         textEvent.setVisibility(View.INVISIBLE);
                         X.setVisibility(View.INVISIBLE);
-                        imageObs.setVisibility(View.INVISIBLE);
-                        imageAction.setVisibility(View.VISIBLE);
+                //End Show and close textEvent
+
+                        imgActionDoor.setVisibility(View.VISIBLE);
+                    }
+                });
+            }
+        });
+
+        //click on observation bed
+        imgObsBed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                imgObsBed.setVisibility(View.INVISIBLE);
+
+                // Show and close textEvent
+                textEvent.setVisibility(View.VISIBLE);
+                X.setVisibility(View.VISIBLE);
+                textEvent.setText(R.string.ObsBed);
+
+                X.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        textEvent.setVisibility(View.INVISIBLE);
+                        X.setVisibility(View.INVISIBLE);
+                        //End Show and close textEvent
+
+                        imgActionBed.setVisibility(View.VISIBLE);
                     }
                 });
             }
         });
 
         //cilck on action door
-        imageAction.setOnClickListener(new View.OnClickListener() {
+        imgActionDoor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //Method drop counter and verify if dead
                 if (isDead(compteur)) {
                     // Intent
@@ -73,7 +103,7 @@ public class Room1 extends AppCompatActivity {
                 //End Method drop counter and verify if dead
 
 
-                //Event
+                // Show and close textEvent
                 textEvent.setVisibility(View.VISIBLE);
                 X.setVisibility(View.VISIBLE);
                 textEvent.setText(R.string.EchecPorteBarreau);
@@ -83,10 +113,40 @@ public class Room1 extends AppCompatActivity {
                     public void onClick(View v) {
                         textEvent.setVisibility(View.INVISIBLE);
                         X.setVisibility(View.INVISIBLE);
-
+                //End Show and close textEvent
                     }
                 });
+            }
+        });
 
+        //cilck on action bed
+        imgActionBed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Method drop counter and verify if dead
+                if (isDead(compteur)) {
+                    // Intent
+                    Intent goTodead = new Intent(Room1.this, DeadActivity.class);
+                    Room1.this.startActivity(goTodead);
+                }
+                textCounter.setText(String.valueOf(compteur));
+                //End Method drop counter and verify if dead
+
+
+                // Show and close textEvent
+                textEvent.setVisibility(View.VISIBLE);
+                X.setVisibility(View.VISIBLE);
+                textEvent.setText(R.string.ActionBed);
+
+                X.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        textEvent.setVisibility(View.INVISIBLE);
+                        X.setVisibility(View.INVISIBLE);
+                        //End Show and close textEvent
+                    }
+                });
             }
         });
     }
@@ -106,7 +166,7 @@ public class Room1 extends AppCompatActivity {
 
 
 
-        //Methode du isDead by Bastien
+        //Methode isDead by Bastien
     /*
     class MainActivity {
 
@@ -137,7 +197,7 @@ public class Room1 extends AppCompatActivity {
     }
 }
 
-//Ancienne methode//
+//Old method//
                 //down action level
                 Action.setCompteurAction(Action.getCompteurAction() - 1);
                 textAction.setText(String.valueOf(Action.getCompteurAction()));

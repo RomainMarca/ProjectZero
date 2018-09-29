@@ -13,4 +13,6 @@
     <string name="les_icons_observation_permettent_d_observer_un_objet_ou_autres_ses_icons_ne_demande_pas_de_point_d_action">Les icons Observation, permettent d\'observer un objet ou autres. Ses icons ne demande pas de point d\'action.</string>
     <string name="les_incons_action_permettent_d_interagir_avec_des_objets_ou_autres_les_icons_action_utilise_des_points_d_action">Les incons Action permettent d\'interagir avec des objets ou autres. Les icons Action utilise des points d\'action.</string>
     <string name="EchecPorteBarreau">Le cadena est trop solide et vous ne parvenez pas à l\'ouvrir</string>
+    <string name="ObsBed">Un lit marqué de taches brunatre. Des personnes sont restés ici longtemps. Des marques au sol montre que le lit a était déplacé réçament.</string>
+    <string name="ActionBed">le lit se déplace mais vous ne trouvez rien d\'intéressant. </string>
 </resources>
