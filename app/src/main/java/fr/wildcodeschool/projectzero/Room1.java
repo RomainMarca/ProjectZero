@@ -1,6 +1,6 @@
 package fr.wildcodeschool.projectzero;
 
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,11 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
+
 
 public class Room1 extends AppCompatActivity {
 
 
     private int compteur = 5;
+    public TextView textEvent = findViewById(R.id.text_eventporte);
+    public Button X = findViewById(R.id.button_hollow);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,30 +39,24 @@ public class Room1 extends AppCompatActivity {
         final TextView textCounter = (TextView) findViewById(R.id.text_action);
         textCounter.setText(String.valueOf(compteur));
 
-        //Text Event and button X
-        final TextView textEvent = findViewById(R.id.text_eventporte);
-        final Button X = findViewById(R.id.button_hollow);
+
 
         //click on observation door
         imgObsDoor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                imgObsDoor.setVisibility(View.INVISIBLE);
-
                 // Show and close textEvent
-                textEvent.setVisibility(View.VISIBLE);
-                X.setVisibility(View.VISIBLE);
+                showTextEvent(true, textEvent, X);
                 textEvent.setText(R.string.PorteBarreau);
 
                 X.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        textEvent.setVisibility(View.INVISIBLE);
-                        X.setVisibility(View.INVISIBLE);
+                        showTextEvent(false, textEvent, X);
                 //End Show and close textEvent
-
-                        imgActionDoor.setVisibility(View.VISIBLE);
+                        imgObsDoor.setVisibility(INVISIBLE);
+                        imgActionDoor.setVisibility(VISIBLE);
                     }
                 });
             }
@@ -68,21 +67,21 @@ public class Room1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                imgObsBed.setVisibility(View.INVISIBLE);
+                imgObsBed.setVisibility(INVISIBLE);
 
                 // Show and close textEvent
-                textEvent.setVisibility(View.VISIBLE);
-                X.setVisibility(View.VISIBLE);
+                textEvent.setVisibility(VISIBLE);
+                X.setVisibility(VISIBLE);
                 textEvent.setText(R.string.ObsBed);
 
                 X.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        textEvent.setVisibility(View.INVISIBLE);
-                        X.setVisibility(View.INVISIBLE);
+                        textEvent.setVisibility(INVISIBLE);
+                        X.setVisibility(INVISIBLE);
                         //End Show and close textEvent
 
-                        imgActionBed.setVisibility(View.VISIBLE);
+                        imgActionBed.setVisibility(VISIBLE);
                     }
                 });
             }
@@ -104,46 +103,46 @@ public class Room1 extends AppCompatActivity {
 
 
                 // Show and close textEvent
-                textEvent.setVisibility(View.VISIBLE);
-                X.setVisibility(View.VISIBLE);
+                textEvent.setVisibility(VISIBLE);
+                X.setVisibility(VISIBLE);
                 textEvent.setText(R.string.EchecPorteBarreau);
 
                 X.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        textEvent.setVisibility(View.INVISIBLE);
-                        X.setVisibility(View.INVISIBLE);
+                        textEvent.setVisibility(INVISIBLE);
+                        X.setVisibility(INVISIBLE);
                 //End Show and close textEvent
                     }
                 });
             }
         });
 
-        //cilck on action bed
+        //click on action bed
         imgActionBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //Method drop counter and verify if dead
+                //Method drop counter and verify if is dead
                 if (isDead(compteur)) {
                     // Intent
                     Intent goTodead = new Intent(Room1.this, DeadActivity.class);
                     Room1.this.startActivity(goTodead);
                 }
                 textCounter.setText(String.valueOf(compteur));
-                //End Method drop counter and verify if dead
+                //End Method drop counter and verify if is dead
 
 
                 // Show and close textEvent
-                textEvent.setVisibility(View.VISIBLE);
-                X.setVisibility(View.VISIBLE);
+                textEvent.setVisibility(VISIBLE);
+                X.setVisibility(VISIBLE);
                 textEvent.setText(R.string.ActionBed);
 
                 X.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        textEvent.setVisibility(View.INVISIBLE);
-                        X.setVisibility(View.INVISIBLE);
+                        textEvent.setVisibility(INVISIBLE);
+                        X.setVisibility(INVISIBLE);
                         //End Show and close textEvent
                     }
                 });
@@ -159,6 +158,16 @@ public class Room1 extends AppCompatActivity {
             return false;
         }
 
+    }
+
+    public void showTextEvent(boolean openEvent, TextView textEvent, Button X){
+           if(openEvent){
+               textEvent.setVisibility(VISIBLE);
+               X.setVisibility(VISIBLE);
+           }else{
+               textEvent.setVisibility(INVISIBLE);
+               X.setVisibility(INVISIBLE);
+        }
     }
 
 
