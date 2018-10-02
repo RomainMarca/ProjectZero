@@ -15,7 +15,8 @@ public class Room1 extends AppCompatActivity {
 
 
     private int compteur = 5;
-
+    public TextView textEvent = findViewById(R.id.text_eventporte);
+    public Button X = findViewById(R.id.button_hollow);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,19 +36,17 @@ public class Room1 extends AppCompatActivity {
         textCounter.setText(String.valueOf(compteur));
 
         //Text Event and button X
-        final TextView textEvent = findViewById(R.id.text_eventporte);
-        final Button X = findViewById(R.id.button_hollow);
+
 
         //click on observation door
         imgObsDoor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+//todo passer ImgObsDoor avec ImgActionDoor
                 imgObsDoor.setVisibility(View.INVISIBLE);
 
                 // Show and close textEvent
-                textEvent.setVisibility(View.VISIBLE);
-                X.setVisibility(View.VISIBLE);
+                Room1.showEvent(true,textEvent, X);
                 textEvent.setText(R.string.PorteBarreau);
 
                 X.setOnClickListener(new View.OnClickListener() {
@@ -159,6 +158,16 @@ public class Room1 extends AppCompatActivity {
             return false;
         }
 
+    }
+
+    public static void showEvent(boolean openEvent, TextView textEvent, Button X){
+        if(openEvent){
+            textEvent.setVisibility(View.VISIBLE);
+            X.setVisibility(View.VISIBLE);
+        }else{
+            textEvent.setVisibility(View.INVISIBLE);
+            X.setVisibility(View.INVISIBLE);
+        }
     }
 
 
