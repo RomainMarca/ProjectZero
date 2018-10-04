@@ -16,15 +16,23 @@ public class Room1 extends AppCompatActivity {
 
     private int compteur = 5;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room1);
 
-        Toast.makeText(this, R.string.ToastIntro, Toast.LENGTH_LONG).show();
 
         final TextView textEvent = findViewById(R.id.text_eventporte);
         final Button X = findViewById(R.id.button_hollow);
+        showEvent(true,textEvent, X);
+        textEvent.setText(R.string.ToastIntro);
+        X.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(false,textEvent, X);
+            }
+        });
 
         final ImageView imgActionDoor = findViewById(R.id.image_actionPorte);
         final ImageView imgObsDoor = findViewById(R.id.image_obsPorte);
