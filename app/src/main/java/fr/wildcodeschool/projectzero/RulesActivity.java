@@ -22,6 +22,7 @@ public class RulesActivity extends AppCompatActivity {
                 RulesActivity.this.startActivity(goToMain);
             }
         });
+        //todo add X marqueur for de start
 
     }
 }

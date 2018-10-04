@@ -15,8 +15,7 @@ public class Room1 extends AppCompatActivity {
 
 
     private int compteur = 5;
-    public TextView textEvent = findViewById(R.id.text_eventporte);
-    public Button X = findViewById(R.id.button_hollow);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +23,8 @@ public class Room1 extends AppCompatActivity {
 
         Toast.makeText(this, R.string.ToastIntro, Toast.LENGTH_LONG).show();
 
-
+        final TextView textEvent = findViewById(R.id.text_eventporte);
+        final Button X = findViewById(R.id.button_hollow);
 
         final ImageView imgActionDoor = findViewById(R.id.image_actionPorte);
         final ImageView imgObsDoor = findViewById(R.id.image_obsPorte);
@@ -36,58 +36,49 @@ public class Room1 extends AppCompatActivity {
         textCounter.setText(String.valueOf(compteur));
 
         //Text Event and button X
-
-
-        //click on observation door
+//todo put in the toast on textevent
+        //todo add style.xml
+        
         imgObsDoor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//todo passer ImgObsDoor avec ImgActionDoor
-                imgObsDoor.setVisibility(View.INVISIBLE);
 
                 // Show and close textEvent
-                Room1.showEvent(true,textEvent, X);
+                showEvent(true,textEvent, X);
                 textEvent.setText(R.string.PorteBarreau);
 
                 X.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        textEvent.setVisibility(View.INVISIBLE);
-                        X.setVisibility(View.INVISIBLE);
-                //End Show and close textEvent
-
+                        showEvent(false,textEvent, X);
+                        imgObsDoor.setVisibility(View.INVISIBLE);
                         imgActionDoor.setVisibility(View.VISIBLE);
                     }
                 });
             }
         });
 
-        //click on observation bed
         imgObsBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                imgObsBed.setVisibility(View.INVISIBLE);
+
 
                 // Show and close textEvent
-                textEvent.setVisibility(View.VISIBLE);
-                X.setVisibility(View.VISIBLE);
+                showEvent(true,textEvent, X);
                 textEvent.setText(R.string.ObsBed);
 
                 X.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        textEvent.setVisibility(View.INVISIBLE);
-                        X.setVisibility(View.INVISIBLE);
-                        //End Show and close textEvent
-
+                        showEvent(false,textEvent, X);
+                        imgObsBed.setVisibility(View.INVISIBLE);
                         imgActionBed.setVisibility(View.VISIBLE);
                     }
                 });
             }
         });
 
-        //cilck on action door
         imgActionDoor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,24 +92,19 @@ public class Room1 extends AppCompatActivity {
                 textCounter.setText(String.valueOf(compteur));
                 //End Method drop counter and verify if dead
 
-
                 // Show and close textEvent
-                textEvent.setVisibility(View.VISIBLE);
-                X.setVisibility(View.VISIBLE);
+                showEvent(true,textEvent, X);
                 textEvent.setText(R.string.EchecPorteBarreau);
 
                 X.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        textEvent.setVisibility(View.INVISIBLE);
-                        X.setVisibility(View.INVISIBLE);
-                //End Show and close textEvent
+                        showEvent(false,textEvent, X);
                     }
                 });
             }
         });
 
-        //cilck on action bed
         imgActionBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,15 +121,12 @@ public class Room1 extends AppCompatActivity {
 
                 // Show and close textEvent
                 textEvent.setVisibility(View.VISIBLE);
-                X.setVisibility(View.VISIBLE);
-                textEvent.setText(R.string.ActionBed);
+                showEvent(true,textEvent, X);
 
                 X.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        textEvent.setVisibility(View.INVISIBLE);
-                        X.setVisibility(View.INVISIBLE);
-                        //End Show and close textEvent
+                        showEvent(false,textEvent, X);
                     }
                 });
             }
@@ -160,7 +143,7 @@ public class Room1 extends AppCompatActivity {
 
     }
 
-    public static void showEvent(boolean openEvent, TextView textEvent, Button X){
+    public void showEvent(boolean openEvent, TextView textEvent, Button X){
         if(openEvent){
             textEvent.setVisibility(View.VISIBLE);
             X.setVisibility(View.VISIBLE);
