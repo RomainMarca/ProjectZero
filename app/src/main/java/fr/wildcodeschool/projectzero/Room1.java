@@ -43,8 +43,6 @@ public class Room1 extends AppCompatActivity {
         final TextView textCounter = (TextView) findViewById(R.id.text_action);
         textCounter.setText(String.valueOf(compteur));
 
-        //Text Event and button X
-//todo put in the toast on textevent
         //todo add style.xml
         
         imgObsDoor.setOnClickListener(new View.OnClickListener() {
@@ -69,8 +67,6 @@ public class Room1 extends AppCompatActivity {
         imgObsBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
 
                 // Show and close textEvent
                 showEvent(true,textEvent, X);
