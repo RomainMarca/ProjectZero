@@ -13,15 +13,14 @@ public class RulesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rules);
 
-        Button buttonRetour = findViewById(R.id.button_return);
+        Button returnButton = findViewById(R.id.button_return);
 
-        buttonRetour.setOnClickListener(new View.OnClickListener() {
+        returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goToMain = new Intent(RulesActivity.this, MainActivity.class);
                 RulesActivity.this.startActivity(goToMain);
             }
         });
-
     }
 }
