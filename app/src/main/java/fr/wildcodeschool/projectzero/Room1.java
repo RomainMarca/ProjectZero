@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class Room1 extends AppCompatActivity {
 
 
-    private int counter = 5;
+    public int counter = 5;
 
 
     @Override
@@ -41,7 +41,6 @@ public class Room1 extends AppCompatActivity {
         final ImageView imgObsBed = findViewById(R.id.image_obsbed);
         final ImageView imgObsWc = findViewById(R.id.image_obswc);
         final ImageView imgActionWc = findViewById(R.id.image_actionwc);
-        final ImageView imgIntentR2 = findViewById(R.id.image_intent_r1);
         final ImageView imgObsWorkpan = findViewById(R.id.image_obsworkplan);
         final ImageView imgActionWorkpan = findViewById(R.id.image_actionworkplan);
         final ImageView imgGoRoom2 = findViewById(R.id.image_intent_r1);
@@ -224,7 +223,7 @@ public class Room1 extends AppCompatActivity {
                     public void onClick(View v) {
                         textEvent.setText(R.string.ActionButtonWc);
                         imgActionWc.setVisibility(View.INVISIBLE);
-                        imgIntentR2.setVisibility(View.VISIBLE);
+                        imgGoRoom2.setVisibility(View.VISIBLE);
                         buttonEvent.setVisibility(View.INVISIBLE);
 
                         //Method drop counter and verify if dead
@@ -246,16 +245,19 @@ public class Room1 extends AppCompatActivity {
                 });
             }
         });
-
+                    //Pass Room2
         imgGoRoom2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent goToRoom2 = new Intent(Room1.this, Room2Activity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("counter", counter);
+                goToRoom2.putExtras(bundle);
                 Room1.this.startActivity(goToRoom2);
+
             }
         });
-
-
 
         imgActionWorkpan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -293,6 +295,7 @@ public class Room1 extends AppCompatActivity {
             }
         });
     }
+
 
     public boolean isDead(int counter) {
         this.counter--;

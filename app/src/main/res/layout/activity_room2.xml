@@ -8,16 +8,14 @@
     android:id="@+id/constraintLayout"
     tools:context=".Room2Activity">
 
-    <ImageView
-        android:id="@+id/image_obsdoor_r2"
-        style="@style/ObsAction"
+    <TextView
+        android:id="@+id/text_counter2"
+        style="@style/textcounter"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/fondtextview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.59000003"
-        app:srcCompat="@drawable/buttonvue" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/image_actiondoor_r2"
@@ -30,4 +28,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.59000003"
         app:srcCompat="@drawable/buttonaction" />
+
+    <ImageView
+        android:id="@+id/image_obsdoor_r2"
+        style="@style/ObsAction"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.59000003"
+        app:srcCompat="@drawable/buttonvue" />
+
+    <ImageView
+        android:id="@+id/image_intent_r2"
+        style="@style/ObsAction"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.72"
+        app:srcCompat="@drawable/buton" />
+
 </android.support.constraint.ConstraintLayout>
