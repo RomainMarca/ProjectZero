@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class Room1 extends AppCompatActivity {
 
 
-    private int compteur = 5;
+    private int counter = 5;
 
 
     @Override
@@ -20,11 +20,14 @@ public class Room1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room1);
 
-
+            //Metthode arguments showEvent
         final TextView textEvent = findViewById(R.id.text_event);
         final Button X = findViewById(R.id.button_hollow);
+
+            //Intro
         showEvent(true,textEvent, X);
         textEvent.setText(R.string.Intro);
+
         X.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,8 +48,10 @@ public class Room1 extends AppCompatActivity {
 
         //view on Action counter
         final TextView textCounter = (TextView) findViewById(R.id.text_action);
-        textCounter.setText(String.valueOf(compteur));
+        textCounter.setText(String.valueOf(counter));
 
+        //TODO resize Icons -directly on Inkscape.
+        //TODO make Icon four direction on Inkscape.
 
                                              //Icon Obs
         imgObsDoor.setOnClickListener(new View.OnClickListener() {
@@ -144,12 +149,12 @@ public class Room1 extends AppCompatActivity {
                         buttonEvent.setVisibility(View.INVISIBLE);
 
                         //Method drop counter and verify if dead
-                        if (isDead(compteur)) {
+                        if (isDead(counter)) {
                             // Intent
                             Intent goTodead = new Intent(Room1.this, DeadActivity.class);
                             Room1.this.startActivity(goTodead);
                         }
-                        textCounter.setText(String.valueOf(compteur));
+                        textCounter.setText(String.valueOf(counter));
                     }
                 });
 
@@ -181,12 +186,15 @@ public class Room1 extends AppCompatActivity {
                         buttonEvent.setVisibility(View.INVISIBLE);
 
                         //Method drop counter and verify if dead
-                        if (isDead(compteur)) {
+                        if (isDead(counter)) {
                             // Intent
                             Intent goTodead = new Intent(Room1.this, DeadActivity.class);
                             Room1.this.startActivity(goTodead);
                         }
-                        textCounter.setText(String.valueOf(compteur));
+                        textCounter.setText(String.valueOf(counter));
+                        //TODO textEvent/ Message write with the finger and blood on the floor
+                        // "I'm [name]. I don't know how arrived here. I'm here perapse 1 or 2 days.
+                        // A women scream in a near room. it's my turn soon. If you read this message, please, say my familly love us".
                     }
                 });
 
@@ -219,12 +227,12 @@ public class Room1 extends AppCompatActivity {
                         buttonEvent.setVisibility(View.INVISIBLE);
 
                         //Method drop counter and verify if dead
-                        if (isDead(compteur)) {
+                        if (isDead(counter)) {
                             // Intent
                             Intent goTodead = new Intent(Room1.this, DeadActivity.class);
                             Room1.this.startActivity(goTodead);
                         }
-                        textCounter.setText(String.valueOf(compteur));
+                        textCounter.setText(String.valueOf(counter));
                     }
                 });
 
@@ -256,12 +264,12 @@ public class Room1 extends AppCompatActivity {
                         buttonEvent.setVisibility(View.INVISIBLE);
 
                         //Method drop counter and verify if dead
-                        if (isDead(compteur)) {
+                        if (isDead(counter)) {
                             // Intent
                             Intent goTodead = new Intent(Room1.this, DeadActivity.class);
                             Room1.this.startActivity(goTodead);
                         }
-                        textCounter.setText(String.valueOf(compteur));
+                        textCounter.setText(String.valueOf(counter));
                     }
                 });
 
@@ -276,9 +284,9 @@ public class Room1 extends AppCompatActivity {
         });
     }
 
-    public boolean isDead(int compteur) {
-        this.compteur--;
-        if (this.compteur < 0) {
+    public boolean isDead(int counter) {
+        this.counter--;
+        if (this.counter < 0) {
             return true;
         } else {
             return false;
@@ -305,7 +313,7 @@ public class Room1 extends AppCompatActivity {
     /*
     class MainActivity {
 
-    private int compteur = 5;
+    private int counter = 5;
 
     public void onCreate() {
 
@@ -315,7 +323,7 @@ public class Room1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // récupérer le nombre de point restant
-                if (isDead(compteur)) {
+                if (isDead(counter)) {
                     // Intent
                 }
             }
@@ -323,25 +331,13 @@ public class Room1 extends AppCompatActivity {
     }
 
     public boolean isDead() {
-        compteur--;
-        if (compteur < 0) {
+        counter--;
+        if (counter < 0) {
             return true;
         } else {
             return false;
         }
     }
 }
-
-//Old method//
-                //down action level
-                Action.setCompteurAction(Action.getCompteurAction() - 1);
-                textAction.setText(String.valueOf(Action.getCompteurAction()));
-
-                //Verification if player's dead.
-                if (Action.getCompteurAction() < 0) {
-
-                    Intent goTodead = new Intent(Room1.this, DeadActivity.class);
-                    Room1.this.startActivity(goTodead);
-                }
      */
 }
