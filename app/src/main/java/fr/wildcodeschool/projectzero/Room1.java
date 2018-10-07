@@ -41,9 +41,10 @@ public class Room1 extends AppCompatActivity {
         final ImageView imgObsBed = findViewById(R.id.image_obsbed);
         final ImageView imgObsWc = findViewById(R.id.image_obswc);
         final ImageView imgActionWc = findViewById(R.id.image_actionwc);
-        final ImageView imgIntentR2 = findViewById(R.id.image_intent_r2);
+        final ImageView imgIntentR2 = findViewById(R.id.image_intent_r1);
         final ImageView imgObsWorkpan = findViewById(R.id.image_obsworkplan);
         final ImageView imgActionWorkpan = findViewById(R.id.image_actionworkplan);
+        final ImageView imgGoRoom2 = findViewById(R.id.image_intent_r1);
         final Button buttonEvent = findViewById(R.id.button_action);
 
         //view on Action counter
@@ -245,7 +246,16 @@ public class Room1 extends AppCompatActivity {
                 });
             }
         });
-        //Todo Intent Room2
+
+        imgGoRoom2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToRoom2 = new Intent(Room1.this, Room2Activity.class);
+                Room1.this.startActivity(goToRoom2);
+            }
+        });
+
+
 
         imgActionWorkpan.setOnClickListener(new View.OnClickListener() {
             @Override

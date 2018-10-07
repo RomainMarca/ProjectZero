@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="textAction">
+    <style name="textcounter">
         <item name="android:layout_width">66dp</item>
         <item name="android:layout_height">54dp</item>
         <item name="android:gravity">center</item>
@@ -36,8 +36,22 @@
         <item name="android:paddingTop">20dp</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">10dp</item>
-
     </style>
 
+    <style name="textEvent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:paddingBottom">55dp</item>
+        <item name="android:paddingRight">25dp</item>
+        <item name="android:paddingTop">25dp</item>
+        <item name="android:paddingLeft">25dp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:visibility">invisible</item>
+    </style>
 
 </resources>
