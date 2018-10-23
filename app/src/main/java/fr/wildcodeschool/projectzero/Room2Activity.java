@@ -21,7 +21,6 @@ public class Room2Activity extends AppCompatActivity {
 
         final ConstraintLayout background = (ConstraintLayout) findViewById(R.id.constraintLayout);
 
-        ImageView imgObsDoorR2 = findViewById(R.id.image_obsdoor_r2);
         ImageView imgActionDoorR2 = findViewById(R.id.image_actiondoor_r2);
         TextView Counter2 = findViewById(R.id.text_counter2);
         ImageView imgGoRoom1 = findViewById(R.id.image_intent_r2);
@@ -33,7 +32,7 @@ public class Room2Activity extends AppCompatActivity {
 
         Counter2.setText(String.valueOf(counter));
 
-        imgObsDoorR2.setOnClickListener(new View.OnClickListener() {
+        imgActionDoorR2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

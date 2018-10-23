@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 
 public class Room1 extends AppCompatActivity {
-    
+
     public int counter = 5;
 
     @Override
