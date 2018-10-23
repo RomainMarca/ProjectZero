@@ -40,4 +40,74 @@
         app:layout_constraintVertical_bias="0.72"
         app:srcCompat="@drawable/buton" />
 
+    <ImageView
+        android:id="@+id/image_obs_locker"
+        style="@style/ObsAction"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.74"
+        app:srcCompat="@drawable/buttonvue" />
+
+
+    <Button
+        android:id="@+id/button_hollow"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:text="X"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/text_event"
+        app:layout_constraintEnd_toEndOf="@+id/text_event"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toStartOf="@+id/text_event"
+        app:layout_constraintTop_toTopOf="@+id/text_event"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/button_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/text_event"
+        app:layout_constraintEnd_toEndOf="@+id/text_event"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="@+id/text_event"
+        app:layout_constraintTop_toTopOf="@+id/text_event"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/text_event"
+        style="@style/textEvent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_action_locker1"
+        style="@style/ObsAction"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.79"
+        app:srcCompat="@drawable/buttonaction" />
+
+    <ImageView
+        android:id="@+id/image_action_locker2"
+        style="@style/ObsAction"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71000004"
+        app:srcCompat="@drawable/buttonaction" />
+
+
 </android.support.constraint.ConstraintLayout>
