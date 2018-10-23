@@ -36,10 +36,7 @@ public class Room1 extends AppCompatActivity {
         });
 
         final ImageView imgActionDoor = findViewById(R.id.image_actionPorte);
-        final ImageView imgObsDoor = findViewById(R.id.image_obsPorte);
         final ImageView imgActionBed = findViewById(R.id.image_actionbed);
-        final ImageView imgObsBed = findViewById(R.id.image_obsbed);
-        final ImageView imgObsWc = findViewById(R.id.image_obswc);
         final ImageView imgActionWc = findViewById(R.id.image_actionwc);
         final ImageView imgObsWorkpan = findViewById(R.id.image_obsworkplan);
         final ImageView imgActionWorkpan = findViewById(R.id.image_actionworkplan);
@@ -52,64 +49,8 @@ public class Room1 extends AppCompatActivity {
 
         //TODO resize Icons -directly on Inkscape.
         //TODO make Icon four direction on Inkscape.
-
-                                             //Icon Obs
-        imgObsDoor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // Show and close textEvent
-                showEvent(true,textEvent, X);
-                textEvent.setText(R.string.ObsDoor);
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false,textEvent, X);
-                        imgObsDoor.setVisibility(View.INVISIBLE);
-                        imgActionDoor.setVisibility(View.VISIBLE);
-                    }
-                });
-            }
-        });
-
-        imgObsBed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // Show and close textEvent
-                showEvent(true,textEvent, X);
-                textEvent.setText(R.string.ObsBed);
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false,textEvent, X);
-                        imgObsBed.setVisibility(View.INVISIBLE);
-                        imgActionBed.setVisibility(View.VISIBLE);
-                    }
-                });
-            }
-        });
-
-        imgObsWc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // Show and close textEvent
-                showEvent(true,textEvent, X);
-                textEvent.setText(R.string.ObsWc);
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false,textEvent, X);
-                        imgObsWc.setVisibility(View.INVISIBLE);
-                        imgActionWc.setVisibility(View.VISIBLE);
-                    }
-                });
-            }
-        });
+        //TODO make a singleton for counter by chapter and by room visited
+        //TODO make firebase for log user and save advanced
 
         imgObsWorkpan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +75,6 @@ public class Room1 extends AppCompatActivity {
         imgActionDoor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 // Show and close textEvent
                 showEvent(true,textEvent, X);
@@ -172,7 +112,6 @@ public class Room1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 // Show and close textEvent
                 showEvent(true,textEvent, X);
                 textEvent.setText(R.string.ActionBed);
@@ -182,7 +121,7 @@ public class Room1 extends AppCompatActivity {
                 buttonEvent.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        textEvent.setText(R.string.ActionButtonBed);
+                        textEvent.setText(R.string.actionButtonBed);
                         buttonEvent.setVisibility(View.INVISIBLE);
 
                         //Method drop counter and verify if dead
@@ -192,9 +131,6 @@ public class Room1 extends AppCompatActivity {
                             Room1.this.startActivity(goTodead);
                         }
                         textCounter.setText(String.valueOf(counter));
-                        //TODO textEvent/ Message write with the finger and blood on the floor
-                        // "I'm [name]. I don't know how arrived here. I'm here perapse 1 or 2 days.
-                        // A women scream in a near room. it's my turn soon. If you read this message, please, say my familly love us".
                     }
                 });
 

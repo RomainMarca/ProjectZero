@@ -10,15 +10,11 @@
     <string name="_5">5</string>
     <string name="Rules2">Les icones Observation, permettent d\'observer l\'environnement. Ils ne necessitent pas de point d\'action. </string>
     <string name="Rules3">Les incones Action permettent d\'interagir avec l\'environnement. Effectuer une action nécessite un point d\'action.</string>
-    <string name="ObsDoor">La porte est fermée d\'une lourde chaine fermée d\'un gros cadena à serrure.</string>
     <string name="Intro">Vous vous reveillez dans une étrange cage aux épais barreaux, dans ce qui semble etre une vieille cave. En un coup d\'oeil vous comprennez etre séquestré dans ce lieu sordide et apparemment vous n\'êtes pas le premier.</string>
     <string name="ActionButtonDoorNull">Le cadena est trop solide et vous ne parvenez pas à l\'ouvrir</string>
-    <string name="ActionDoor">La porte est fermée d\'une chaine retenue par un cadena. Voulez vous l\'ouvrir?</string>
-    <string name="ObsBed">Un lit marqué de taches brunatre. Des personnes sont restés ici longtemps. Des marques au sol montre que le lit a été déplacé.</string>
-    <string name="ActionBed">le lit semble pouvoir ce déplacer. Voulez vous le déplacer?</string>
-    <string name="ActionButtonBed">le lit se déplace mais vous ne trouvez rien d\'intéressant. </string>
-    <string name="ObsWc">Des toilettes d\'une saleté repoussante. il n\'y a pas d\'eau à l\'interieur?</string>
-    <string name="ActionWc">les toilette sonne creux. il ne semble pas relier a la tuillauterie. Vous les vous les déplacer.</string>
+    <string name="ActionDoor">La porte est fermée d\'une lourde chaine avec un gros cadena à serrure.</string>
+    <string name="ActionBed">Un lit marqué de taches brunatre.le lit semble pouvoir ce déplacer recemment.</string>
+    <string name="ActionWc">Des toilettes d\'une saleté repoussante.il n\'y a pas d\'eau à l\'interieur. il ne semble pas relier a la tuillauterie.</string>
     <string name="ObsWorkplan">Un plan de travail avec de nombreux papiers epparpillez partout.</string>
     <string name="ActionWorkplan">Le plan de travail est éloigné. Voulez vous essayez de lire?</string>
     <string name="ActionButtonWorkplanNull">Le plan de travail est trop éloigné pour lire quoi que ce soit.</string>
@@ -27,4 +23,5 @@
     <string name="eventRead">Lire</string>
     <string name="ActionButtonWc">Dans un grincement vous déplacé les toilettes et vous rendez compte que derriere il y a un passage étroit.</string>
     <string name="positionDépart">Un symbole indique la position de départ.</string>
+    <string name="actionButtonBed">Vous déplacez le lit. Vous trouvez sur sol un message écrit au doigt avec du sang: \'Je m\'appel Archie Mantat. Je ne sais pas comment je suis arrivé ici. Cela fait 3 jours que je suis là. J\'enttend une femme crier dans la salle à coté. Si vous lisez ce message, dite à ma famille que je les aimes.\'</string>
 </resources>
