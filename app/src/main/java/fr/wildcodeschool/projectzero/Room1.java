@@ -10,10 +10,8 @@ import android.widget.TextView;
 
 
 public class Room1 extends AppCompatActivity {
-
-
+    
     public int counter = 5;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +68,6 @@ public class Room1 extends AppCompatActivity {
                 });
             }
         });
-
                                             //Icon Action
         imgActionDoor.setOnClickListener(new View.OnClickListener() {
             @Override
