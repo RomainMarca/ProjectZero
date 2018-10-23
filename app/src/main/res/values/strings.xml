@@ -21,8 +21,10 @@
     <string name="eventMove">Déplacer</string>
     <string name="eventOpen">Ouvrir</string>
     <string name="eventRead">Lire</string>
+    <string name="eventExploration">Fouiller</string>
     <string name="ActionButtonWc">Dans un grincement vous déplacé les toilettes et vous rendez compte que derriere il y a un passage étroit.</string>
     <string name="positionDépart">Un symbole indique la position de départ.</string>
     <string name="actionButtonBed">Vous déplacez le lit. Vous trouvez sur sol un message écrit au doigt avec du sang: \'Je m\'appel Archie Mantat. Je ne sais pas comment je suis arrivé ici. Cela fait 3 jours que je suis là. J\'enttend une femme crier dans la salle à coté. Si vous lisez ce message, dite à ma famille que je les aimes.\'</string>
     <string name="ObsLockerR2">Des objets de toutes sortes sont entassés.</string>
+    <string name="enterRoom2">Vous vous faufilez par le trou. Vous entrez dans une petite salle exigu rempli d\'objets en tout genre.</string>
 </resources>
