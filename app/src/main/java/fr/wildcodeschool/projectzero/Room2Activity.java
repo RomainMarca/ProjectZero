@@ -21,7 +21,7 @@ public class Room2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_room2);
 
         final ConstraintLayout background = (ConstraintLayout) findViewById(R.id.constraintLayout);
-        
+
         //Metthode arguments showEvent
         final TextView textEvent = findViewById(R.id.text_event);
         final Button X = findViewById(R.id.button_hollow);
