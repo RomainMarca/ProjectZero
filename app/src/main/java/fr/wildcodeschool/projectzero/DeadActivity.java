@@ -19,9 +19,12 @@ public class DeadActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                PlayerSingleton.getInstance().setCounter(10);
+                PlayerSingleton.getInstance().setR2AllVisited(false);
+                PlayerSingleton.getInstance().setR2isVisited(false);
+                PlayerSingleton.getInstance().setR1isVisited(false);
                 Intent goToMain = new Intent(DeadActivity.this , MainActivity.class);
                 DeadActivity.this.startActivity(goToMain);
-
             }
         });
 
