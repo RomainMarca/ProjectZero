@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class Room2Activity extends AppCompatActivity {
 
-    public int counter;
+
     //TODO make the background complete for build in room2.xml
 
     @Override
@@ -28,24 +28,35 @@ public class Room2Activity extends AppCompatActivity {
         final Button buttonEvent = findViewById(R.id.button_action);
 
         final ImageView imgActionDoorR2 = findViewById(R.id.image_actiondoor_r2);
-        TextView Counter2 = findViewById(R.id.text_counter2);
+        final TextView textCounter = findViewById(R.id.text_counter2);
         ImageView imgGoRoom1 = findViewById(R.id.image_intent_r2);
         final ImageView imgObsLockerR2 = findViewById(R.id.image_obs_locker);
         final ImageView imgActionLocker1R2 = findViewById(R.id.image_action_locker1);
         final ImageView imgActionLocker2R2 = findViewById(R.id.image_action_locker2);
 
-        Bundle bundle = getIntent().getExtras();
-        counter = bundle.getInt("counter", counter);
-        Counter2.setText(String.valueOf(counter));
 
-        showEvent(true, textEvent, X);
-        textEvent.setText(R.string.enterRoom2);
-        X.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showEvent(false, textEvent, X);
-            }
-        });
+        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+        if (isDeadVerify()) {
+            // Intent
+            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+            Room2Activity.this.startActivity(goTodead);
+        }
+
+        if (!PlayerSingleton.getInstance().isR2isVisited()) {
+            showEvent(true, textEvent, X);
+            textEvent.setText(R.string.enterRoom2);
+            X.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showEvent(false, textEvent, X);
+                }
+            });
+        }
+
+        if (PlayerSingleton.getInstance().isR2AllVisited()) {
+            isVisited(true, background);
+            imgActionDoorR2.setVisibility(View.INVISIBLE);
+        }
 
         imgObsLockerR2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,14 +81,50 @@ public class Room2Activity extends AppCompatActivity {
         imgActionDoorR2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isVisited(true, background);
-                imgActionDoorR2.setVisibility(View.INVISIBLE);
+                showEvent(true, textEvent, X);
+                textEvent.setText(R.string.porteR2);
+                buttonEvent.setVisibility(View.VISIBLE);
+                buttonEvent.setText(R.string.eventOpen);
+
+                buttonEvent.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        textEvent.setText(R.string.ButtonActionDoorR2);
+                        buttonEvent.setVisibility(View.INVISIBLE);
+                        isVisited(true, background);
+                        PlayerSingleton.getInstance().setR2AllVisited(true);
+
+                        //Method drop counter and verify if dead
+                        if (isDead()) {
+                            // Intent
+                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                            Room2Activity.this.startActivity(goTodead);
+                        }
+                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+                    }
+                });
+                X.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showEvent(false, textEvent, X);
+                        imgActionDoorR2.setVisibility(View.INVISIBLE);
+                        buttonEvent.setVisibility(View.INVISIBLE);
+                    }
+                });
             }
         });
 
         imgGoRoom1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Method drop counter and verify if dead
+                if (isDead()) {
+                    // Intent
+                    Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                    Room2Activity.this.startActivity(goTodead);
+                }
+                textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+                PlayerSingleton.getInstance().setR2isVisited(true);
                 Intent goToRoom1 = new Intent(Room2Activity.this, Room1.class);
                 Room2Activity.this.startActivity(goToRoom1);
             }
@@ -85,7 +132,6 @@ public class Room2Activity extends AppCompatActivity {
 
 
     }
-
 
     public void isVisited(boolean visited, ConstraintLayout background) {
         if (visited) {
@@ -100,6 +146,23 @@ public class Room2Activity extends AppCompatActivity {
         } else {
             textEvent.setVisibility(View.INVISIBLE);
             X.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public boolean isDead() {
+        PlayerSingleton.getInstance().setCounter(PlayerSingleton.getInstance().getCounter()-1);
+        if (PlayerSingleton.getInstance().getCounter() < 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isDeadVerify() {
+        if (PlayerSingleton.getInstance().getCounter() < 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

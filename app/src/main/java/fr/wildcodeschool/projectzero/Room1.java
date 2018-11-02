@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 public class Room1 extends AppCompatActivity {
 
-    public int counter = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,17 +20,6 @@ public class Room1 extends AppCompatActivity {
             //Metthode arguments showEvent
         final TextView textEvent = findViewById(R.id.text_event);
         final Button X = findViewById(R.id.button_hollow);
-
-            //Intro
-        showEvent(true,textEvent, X);
-        textEvent.setText(R.string.Intro);
-
-        X.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showEvent(false,textEvent, X);
-            }
-        });
 
         final ImageView imgActionDoor = findViewById(R.id.image_actionPorte);
         final ImageView imgActionBed = findViewById(R.id.image_actionbed);
@@ -43,12 +31,34 @@ public class Room1 extends AppCompatActivity {
 
         //view on Action counter
         final TextView textCounter = (TextView) findViewById(R.id.text_action);
-        textCounter.setText(String.valueOf(counter));
+        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
 
         //TODO resize Icons -directly on Inkscape.
         //TODO make Icon four direction on Inkscape.
         //TODO make a singleton for counter by chapter and by room visited
         //TODO make firebase for log user and save advanced
+
+
+        if (isDeadVerify()) {
+            // Intent
+            Intent goTodead = new Intent(Room1.this, DeadActivity.class);
+            Room1.this.startActivity(goTodead);
+        }
+        if (!PlayerSingleton.getInstance().isR1isVisited()) {
+            //Intro
+            showEvent(true,textEvent, X);
+            textEvent.setText(R.string.Intro);
+
+            X.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showEvent(false,textEvent, X);
+                }
+            });
+        } else {
+            imgActionWc.setVisibility(View.INVISIBLE);
+            imgGoRoom2.setVisibility(View.VISIBLE);
+        }
 
         imgObsWorkpan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,12 +96,12 @@ public class Room1 extends AppCompatActivity {
                         buttonEvent.setVisibility(View.INVISIBLE);
 
                         //Method drop counter and verify if dead
-                        if (isDead(counter)) {
+                        if (isDead()) {
                             // Intent
                             Intent goTodead = new Intent(Room1.this, DeadActivity.class);
                             Room1.this.startActivity(goTodead);
                         }
-                        textCounter.setText(String.valueOf(counter));
+                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
                     }
                 });
 
@@ -122,12 +132,12 @@ public class Room1 extends AppCompatActivity {
                         buttonEvent.setVisibility(View.INVISIBLE);
 
                         //Method drop counter and verify if dead
-                        if (isDead(counter)) {
+                        if (isDead()) {
                             // Intent
                             Intent goTodead = new Intent(Room1.this, DeadActivity.class);
                             Room1.this.startActivity(goTodead);
                         }
-                        textCounter.setText(String.valueOf(counter));
+                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
                     }
                 });
 
@@ -160,12 +170,12 @@ public class Room1 extends AppCompatActivity {
                         buttonEvent.setVisibility(View.INVISIBLE);
 
                         //Method drop counter and verify if dead
-                        if (isDead(counter)) {
+                        if (isDead()) {
                             // Intent
                             Intent goTodead = new Intent(Room1.this, DeadActivity.class);
                             Room1.this.startActivity(goTodead);
                         }
-                        textCounter.setText(String.valueOf(counter));
+                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
                     }
                 });
 
@@ -183,12 +193,17 @@ public class Room1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent goToRoom2 = new Intent(Room1.this, Room2Activity.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt("counter", counter);
-                goToRoom2.putExtras(bundle);
-                Room1.this.startActivity(goToRoom2);
+                //Method drop counter and verify if dead
+                if (isDead()) {
+                    // Intent
+                    Intent goTodead = new Intent(Room1.this, DeadActivity.class);
+                    Room1.this.startActivity(goTodead);
+                }
+                textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
 
+                PlayerSingleton.getInstance().setR1isVisited(true);
+                Intent goToRoom2 = new Intent(Room1.this, Room2Activity.class);
+                Room1.this.startActivity(goToRoom2);
             }
         });
 
@@ -209,12 +224,12 @@ public class Room1 extends AppCompatActivity {
                         buttonEvent.setVisibility(View.INVISIBLE);
 
                         //Method drop counter and verify if dead
-                        if (isDead(counter)) {
+                        if (isDead()) {
                             // Intent
                             Intent goTodead = new Intent(Room1.this, DeadActivity.class);
                             Room1.this.startActivity(goTodead);
                         }
-                        textCounter.setText(String.valueOf(counter));
+                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
                     }
                 });
 
@@ -230,9 +245,9 @@ public class Room1 extends AppCompatActivity {
     }
 
 
-    public boolean isDead(int counter) {
-        this.counter--;
-        if (this.counter < 0) {
+    public boolean isDead() {
+        PlayerSingleton.getInstance().setCounter(PlayerSingleton.getInstance().getCounter()-1);
+        if (PlayerSingleton.getInstance().getCounter() < 0) {
             return true;
         } else {
             return false;
@@ -250,40 +265,11 @@ public class Room1 extends AppCompatActivity {
         }
     }
 
-
-
-
-
-
-        //Methode isDead by Bastien
-    /*
-    class MainActivity {
-
-    private int counter = 5;
-
-    public void onCreate() {
-
-
-        Button event = findViewById(R.id.eventButton);
-        event.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // récupérer le nombre de point restant
-                if (isDead(counter)) {
-                    // Intent
-                }
-            }
-        }
-    }
-
-    public boolean isDead() {
-        counter--;
-        if (counter < 0) {
+    public boolean isDeadVerify() {
+        if (PlayerSingleton.getInstance().getCounter() < 0) {
             return true;
         } else {
             return false;
         }
     }
-}
-     */
 }
