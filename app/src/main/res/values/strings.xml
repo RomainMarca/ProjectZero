@@ -30,4 +30,9 @@
     <string name="porteR2">Une porte en bois vieillie.</string>
     <string name="ButtonActionDoorR2">La porte s\'ouvre sur ce qui semble être un débarra.</string>
     <string name="rulesArrows">Les icons flèche permettent de vous déplacer d\'une salle à une autre pour une action.</string>
+    <string name="ActionShelf">Une boite en metal rouillé.</string>
+    <string name="findKeydoor">Vous trouvez une clef de porte.</string>
+    <string name="actionWooddoor">Une porte en bois.</string>
+    <string name="DoorClose">La porte est fermé a clef.</string>
+    <string name="DoorOpenKey">Vous utilisez la clef pour ouvrir la porte.</string>
 </resources>
