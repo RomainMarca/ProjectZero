@@ -29,4 +29,5 @@
     <string name="enterRoom2">Vous vous faufilez par le trou. Vous entrez dans une petite salle exigu rempli d\'objets en tout genre.</string>
     <string name="porteR2">Une porte en bois vieillie.</string>
     <string name="ButtonActionDoorR2">La porte s\'ouvre sur ce qui semble être un débarra.</string>
+    <string name="rulesArrows">Les icons flèche permettent de vous déplacer d\'une salle à une autre pour une action.</string>
 </resources>
