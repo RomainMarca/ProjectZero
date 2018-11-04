@@ -35,6 +35,11 @@ public class Room2Activity extends AppCompatActivity {
         final ImageView imgActionLocker1R2 = findViewById(R.id.image_action_locker1);
         final ImageView imgActionLocker2R2 = findViewById(R.id.image_action_locker2);
         final ImageView imgActionShelfR2 = findViewById(R.id.image_shelf);
+        final ImageView imgActionTable = findViewById(R.id.image_table);
+        final ImageView imgActionTools = findViewById(R.id.image_tools);
+        final ImageView imgActionCarton = findViewById(R.id.image_carton);
+        final ImageView imgActionRack2 = findViewById(R.id.image_rack2);
+        final ImageView imgActionRack1 = findViewById(R.id.image_rack);
         final ImageView keyDoor = findViewById(R.id.image_keydoor);
         final ImageView imgGoRoom3 = findViewById(R.id.image_intent_r3);
 
@@ -86,6 +91,46 @@ public class Room2Activity extends AppCompatActivity {
             }
         });
 
+        imgActionLocker1R2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(true, textEvent, X);
+                textEvent.setText(getString(R.string.actionLocker1) + getString(R.string.actionLocker1_1));
+                buttonEvent.setVisibility(View.VISIBLE);
+                buttonEvent.setText(R.string.eventOpen);
+
+                buttonEvent.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        textEvent.setText(R.string.buttonActionLocker1);
+                        buttonEvent.setVisibility(View.INVISIBLE);
+
+                        if (isDead()) {
+                            // Intent
+                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                            Room2Activity.this.startActivity(goTodead);
+                        }
+                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+
+                        if (isDead()) {
+                            // Intent
+                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                            Room2Activity.this.startActivity(goTodead);
+                        }
+                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+                    }
+                });
+
+                X.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showEvent(false, textEvent, X);
+                        buttonEvent.setVisibility(View.INVISIBLE);
+                    }
+                });
+            }
+        });
+
         imgActionDoorLockerR2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,11 +156,115 @@ public class Room2Activity extends AppCompatActivity {
                         textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
                     }
                 });
+
                 X.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         showEvent(false, textEvent, X);
                         imgActionDoorLockerR2.setVisibility(View.INVISIBLE);
+                        buttonEvent.setVisibility(View.INVISIBLE);
+                    }
+                });
+            }
+        });
+
+        imgActionTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(true, textEvent, X);
+                textEvent.setText(R.string.actionTable);
+                buttonEvent.setVisibility(View.VISIBLE);
+                buttonEvent.setText(R.string.eventExploration);
+
+                buttonEvent.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        textEvent.setText(R.string.buttonAtcionTable);
+                        buttonEvent.setVisibility(View.INVISIBLE);
+
+                        //Method drop counter and verify if dead
+                        if (isDead()) {
+                            // Intent
+                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                            Room2Activity.this.startActivity(goTodead);
+                        }
+                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+                    }
+                });
+
+                X.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showEvent(false, textEvent, X);
+                        buttonEvent.setVisibility(View.INVISIBLE);
+                    }
+                });
+
+            }
+        });
+
+        imgActionTools.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(true, textEvent, X);
+                textEvent.setText(R.string.actionTools);
+                buttonEvent.setVisibility(View.VISIBLE);
+                buttonEvent.setText(R.string.eventExploration);
+
+                buttonEvent.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        textEvent.setText(R.string.buttonActonTols);
+                        buttonEvent.setVisibility(View.INVISIBLE);
+
+                        //Method drop counter and verify if dead
+                        if (isDead()) {
+                            // Intent
+                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                            Room2Activity.this.startActivity(goTodead);
+                        }
+                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+                    }
+                });
+
+                X.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showEvent(false, textEvent, X);
+                        buttonEvent.setVisibility(View.INVISIBLE);
+                    }
+                });
+            }
+        });
+
+        imgActionCarton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(true, textEvent, X);
+                textEvent.setText(R.string.actionCarton);
+                buttonEvent.setVisibility(View.VISIBLE);
+                buttonEvent.setText(R.string.eventOpen);
+
+                buttonEvent.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        textEvent.setText(R.string.buttonActionCarton);
+                        buttonEvent.setVisibility(View.INVISIBLE);
+
+                        //Method drop counter and verify if dead
+                        if (isDead()) {
+                            // Intent
+                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                            Room2Activity.this.startActivity(goTodead);
+                        }
+                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+                    }
+                });
+
+                X.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showEvent(false, textEvent, X);
                         buttonEvent.setVisibility(View.INVISIBLE);
                     }
                 });
@@ -236,7 +385,7 @@ public class Room2Activity extends AppCompatActivity {
     }
 
     public boolean isDead() {
-        PlayerSingleton.getInstance().setCounter(PlayerSingleton.getInstance().getCounter()-1);
+        PlayerSingleton.getInstance().setCounter(PlayerSingleton.getInstance().getCounter() - 1);
         if (PlayerSingleton.getInstance().getCounter() < 0) {
             return true;
         } else {
