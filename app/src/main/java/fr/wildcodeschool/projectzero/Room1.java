@@ -28,6 +28,7 @@ public class Room1 extends AppCompatActivity {
         final ImageView imgActionWorkpan = findViewById(R.id.image_actionworkplan);
         final ImageView imgGoRoom2 = findViewById(R.id.image_intent_r1);
         final Button buttonEvent = findViewById(R.id.button_action);
+        final ImageView keyDoor = findViewById(R.id.image_keydoor);
 
         //view on Action counter
         final TextView textCounter = (TextView) findViewById(R.id.text_action);
@@ -38,6 +39,7 @@ public class Room1 extends AppCompatActivity {
         //TODO make a singleton for counter by chapter and by room visited
         //TODO make firebase for log user and save advanced
 
+        keyDoorVerify(keyDoor);
 
         if (isDeadVerify()) {
             // Intent
@@ -270,6 +272,14 @@ public class Room1 extends AppCompatActivity {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void keyDoorVerify(ImageView keyDoor) {
+        if (PlayerSingleton.getInstance().isKeydoor()) {
+            keyDoor.setVisibility(View.VISIBLE);
+        } else {
+            keyDoor.setVisibility(View.INVISIBLE);
         }
     }
 }

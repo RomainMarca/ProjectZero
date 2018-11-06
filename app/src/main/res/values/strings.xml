@@ -30,4 +30,18 @@
     <string name="porteR2">Une porte en bois vieillie.</string>
     <string name="ButtonActionDoorR2">La porte s\'ouvre sur ce qui semble être un débarra.</string>
     <string name="rulesArrows">Les icons flèche permettent de vous déplacer d\'une salle à une autre pour une action.</string>
+    <string name="ActionShelf">Une boite en metal rouillé.</string>
+    <string name="findKeydoor">Vous trouvez une clef de porte.</string>
+    <string name="actionWooddoor">Une porte en bois.</string>
+    <string name="DoorClose">La porte est fermé a clef.</string>
+    <string name="DoorOpenKey">Vous utilisez la clef pour ouvrir la porte.</string>
+    <string name="actionLocker1">Vous fouillez un amas d\'objets en tous genre. Des cartons remplis de vielles vaiselles, des jouets d\'enfants d\'un autre age et autres babioles.</string>
+    <string name="actionLocker1_1">Autour de nombreux objets, une boite de gouter en metal attire votre attention.</string>
+    <string name="buttonActionLocker1">A l\'interieur de la boite vous trouvez des morceaux de reste humain. Cela vous lève le coeur, vous perdez une action.</string>
+    <string name="actionTable">Sur une table en métal rouillée il y a 5 sac mortueaire en plastique bleus.</string>
+    <string name="buttonAtcionTable">Vous commencez à fouiller les sacs mortuaire quand vous vous appercevez qu\'il sont pleins. Cela vous écoeur, vous ne pouvez pas continuer.</string>
+    <string name="actionTools">Une boite à outils pleine de sang posée sur un tabouré à coté de la table.</string>
+    <string name="buttonActonTols">Les outils sont tous cassés et rien ne semble utile.</string>
+    <string name="actionCarton">Des cartons sont entassés dans le coin de la pîèce. Un carton posé tout droit semble un peu ouvert.</string>
+    <string name="buttonActionCarton">A l\'interieur vous tombez sur une éffrayante poupée avec une robe imbibée de rouge par du sang. Elle a des clou plantés dans la tête en guise de chevelure et des yeux pris directement sur des humains.</string>
 </resources>
