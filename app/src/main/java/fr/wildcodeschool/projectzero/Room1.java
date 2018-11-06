@@ -85,6 +85,13 @@ public class Room1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                String actionStr = getString(R.string.ActionDoor);
+                String eventStr = getString(R.string.eventOpen);
+                String buttonStr = getString(R.string.ActionButtonDoorNull);
+
+                actionClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr);
+
+                /*
                 // Show and close textEvent
                 showEvent(true,textEvent, X);
                 textEvent.setText(R.string.ActionDoor);
@@ -113,7 +120,7 @@ public class Room1 extends AppCompatActivity {
                         showEvent(false,textEvent, X);
                         buttonEvent.setVisibility(View.INVISIBLE);
                     }
-                });
+                });*/
             }
         });
 
@@ -282,4 +289,36 @@ public class Room1 extends AppCompatActivity {
             keyDoor.setVisibility(View.INVISIBLE);
         }
     }
+
+    public void actionClick(final TextView textEvent, final Button X, final Button buttonEvent, final TextView textCounter, String actionStr, String eventStr, final String buttonStr) {
+        // Show and close textEvent
+        showEvent(true,textEvent, X);
+        textEvent.setText(actionStr);
+        buttonEvent.setVisibility(View.VISIBLE);
+        buttonEvent.setText(eventStr);
+
+        buttonEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textEvent.setText(buttonStr);
+                buttonEvent.setVisibility(View.INVISIBLE);
+                //Method drop counter and verify if dead
+                if (isDead()) {
+                    // Intent
+                    Intent goTodead = new Intent(Room1.this, DeadActivity.class);
+                    Room1.this.startActivity(goTodead);
+                }
+                textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+            }
+        });
+
+        X.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(false,textEvent, X);
+                buttonEvent.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
 }
