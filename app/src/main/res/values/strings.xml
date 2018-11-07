@@ -35,8 +35,7 @@
     <string name="actionWooddoor">Une porte en bois.</string>
     <string name="DoorClose">La porte est fermé a clef.</string>
     <string name="DoorOpenKey">Vous utilisez la clef pour ouvrir la porte.</string>
-    <string name="actionLocker1">Vous fouillez un amas d\'objets en tous genre. Des cartons remplis de vielles vaiselles, des jouets d\'enfants d\'un autre age et autres babioles.</string>
-    <string name="actionLocker1_1">Autour de nombreux objets, une boite de gouter en metal attire votre attention.</string>
+    <string name="actionLocker1">Vous fouillez un amas d\'objets en tous genre. Des cartons remplis de vielles vaiselles, des jouets d\'enfants d\'un autre age et autres babioles. Autour de nombreux objets, une boite de gouter en metal attire votre attention.</string>
     <string name="buttonActionLocker1">A l\'interieur de la boite vous trouvez des morceaux de reste humain. Cela vous lève le coeur, vous perdez une action.</string>
     <string name="actionTable">Sur une table en métal rouillée il y a 5 sac mortueaire en plastique bleus.</string>
     <string name="buttonAtcionTable">Vous commencez à fouiller les sacs mortuaire quand vous vous appercevez qu\'il sont pleins. Cela vous écoeur, vous ne pouvez pas continuer.</string>
