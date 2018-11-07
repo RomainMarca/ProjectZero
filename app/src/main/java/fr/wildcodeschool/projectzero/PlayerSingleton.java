@@ -25,13 +25,9 @@ class PlayerSingleton {
        r2OpenDoor= false;
     }
 
-    public boolean isR2OpenDoor() {
-        return r2OpenDoor;
-    }
+    public boolean isR2OpenDoor() { return r2OpenDoor; }
 
-    public void setR2OpenDoor(boolean r2OpenDoor) {
-        this.r2OpenDoor = r2OpenDoor;
-    }
+    public void setR2OpenDoor(boolean r2OpenDoor) { this.r2OpenDoor = r2OpenDoor; }
 
     public int getCounter() {
         return counter;
@@ -49,9 +45,7 @@ class PlayerSingleton {
         this.r1isVisited = r1isVisited;
     }
 
-    public boolean isR2isVisited() {
-        return r2isVisited;
-    }
+    public boolean isR2isVisited() { return r2isVisited; }
 
     public void setR2isVisited(boolean r2isVisited) {
         this.r2isVisited = r2isVisited;

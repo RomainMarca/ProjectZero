@@ -35,7 +35,6 @@ public class Room1 extends AppCompatActivity {
         textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
 
         //TODO resize Icons -directly on Inkscape.
-        //TODO make Icon four direction on Inkscape.
         //TODO make firebase for log user and save advanced
 
         //Verify player progress
@@ -90,7 +89,7 @@ public class Room1 extends AppCompatActivity {
                 String buttonStr = getString(R.string.ActionButtonWc);
                 actionIntentClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr, imgActionWc, imgGoRoom2);            }
         });
-                    //Pass Room2
+
         imgGoRoom2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

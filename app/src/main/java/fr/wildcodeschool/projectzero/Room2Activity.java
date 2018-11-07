@@ -238,7 +238,8 @@ public class Room2Activity extends AppCompatActivity {
         });
     }
 
-    public void action2Click(final TextView textEvent, final Button X, final Button buttonEvent, final TextView textCounter, String actionStr, String eventStr, final String buttonStr) {
+    public void action2Click(final TextView textEvent, final Button X, final Button buttonEvent,
+                             final TextView textCounter, String actionStr, String eventStr, final String buttonStr) {
         showEvent(true,textEvent, X);
         textEvent.setText(actionStr);
         buttonEvent.setVisibility(View.VISIBLE);
