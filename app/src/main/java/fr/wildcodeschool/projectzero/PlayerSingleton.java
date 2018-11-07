@@ -7,6 +7,7 @@ class PlayerSingleton {
     private boolean r1isVisited;
     private boolean r2isVisited;
     private boolean r2AllVisited;
+    private boolean r2OpenDoor;
     private boolean keydoor;
 
 
@@ -21,6 +22,15 @@ class PlayerSingleton {
        r2isVisited = false;
        r2AllVisited = false;
        keydoor= false;
+       r2OpenDoor= false;
+    }
+
+    public boolean isR2OpenDoor() {
+        return r2OpenDoor;
+    }
+
+    public void setR2OpenDoor(boolean r2OpenDoor) {
+        this.r2OpenDoor = r2OpenDoor;
     }
 
     public int getCounter() {

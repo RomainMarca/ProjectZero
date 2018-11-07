@@ -36,37 +36,15 @@ public class Room1 extends AppCompatActivity {
 
         //TODO resize Icons -directly on Inkscape.
         //TODO make Icon four direction on Inkscape.
-        //TODO make a singleton for counter by chapter and by room visited
         //TODO make firebase for log user and save advanced
 
-        keyDoorVerify(keyDoor);
-
-        if (isDeadVerify()) {
-            // Intent
-            Intent goTodead = new Intent(Room1.this, DeadActivity.class);
-            Room1.this.startActivity(goTodead);
-        }
-        if (!PlayerSingleton.getInstance().isR1isVisited()) {
-            //Intro
-            showEvent(true,textEvent, X);
-            textEvent.setText(R.string.Intro);
-
-            X.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showEvent(false,textEvent, X);
-                }
-            });
-        } else {
-            imgActionWc.setVisibility(View.INVISIBLE);
-            imgGoRoom2.setVisibility(View.VISIBLE);
-        }
+        //Verify player progress
+        room1Verify(textEvent, X, imgActionWc, imgGoRoom2, keyDoor);
 
         imgObsWorkpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // Show and close textEvent
                 showEvent(true,textEvent, X);
                 textEvent.setText(R.string.ObsWorkplan);
 
@@ -88,39 +66,7 @@ public class Room1 extends AppCompatActivity {
                 String actionStr = getString(R.string.ActionDoor);
                 String eventStr = getString(R.string.eventOpen);
                 String buttonStr = getString(R.string.ActionButtonDoorNull);
-
                 actionClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr);
-
-                /*
-                // Show and close textEvent
-                showEvent(true,textEvent, X);
-                textEvent.setText(R.string.ActionDoor);
-                buttonEvent.setVisibility(View.VISIBLE);
-                buttonEvent.setText(R.string.eventOpen);
-
-                buttonEvent.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        textEvent.setText(R.string.ActionButtonDoorNull);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-
-                        //Method drop counter and verify if dead
-                        if (isDead()) {
-                            // Intent
-                            Intent goTodead = new Intent(Room1.this, DeadActivity.class);
-                            Room1.this.startActivity(goTodead);
-                        }
-                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-                    }
-                });
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false,textEvent, X);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                    }
-                });*/
             }
         });
 
@@ -128,35 +74,10 @@ public class Room1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // Show and close textEvent
-                showEvent(true,textEvent, X);
-                textEvent.setText(R.string.ActionBed);
-                buttonEvent.setVisibility(View.VISIBLE);
-                buttonEvent.setText(R.string.eventMove);
-
-                buttonEvent.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        textEvent.setText(R.string.actionButtonBed);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-
-                        //Method drop counter and verify if dead
-                        if (isDead()) {
-                            // Intent
-                            Intent goTodead = new Intent(Room1.this, DeadActivity.class);
-                            Room1.this.startActivity(goTodead);
-                        }
-                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-                    }
-                });
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false,textEvent, X);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                    }
-                });
+                String actionStr = getString(R.string.ActionBed);
+                String eventStr = getString(R.string.eventMove);
+                String buttonStr = getString(R.string.actionButtonBed);
+                actionClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr);
             }
         });
 
@@ -164,38 +85,10 @@ public class Room1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // Show and close textEvent
-                showEvent(true,textEvent, X);
-                textEvent.setText(R.string.ActionWc);
-                buttonEvent.setVisibility(View.VISIBLE);
-                buttonEvent.setText(R.string.eventMove);
-
-                buttonEvent.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        textEvent.setText(R.string.ActionButtonWc);
-                        imgActionWc.setVisibility(View.INVISIBLE);
-                        imgGoRoom2.setVisibility(View.VISIBLE);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-
-                        //Method drop counter and verify if dead
-                        if (isDead()) {
-                            // Intent
-                            Intent goTodead = new Intent(Room1.this, DeadActivity.class);
-                            Room1.this.startActivity(goTodead);
-                        }
-                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-                    }
-                });
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false,textEvent, X);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                    }
-                });
-            }
+                String actionStr = getString(R.string.ActionWc);
+                String eventStr = getString(R.string.eventMove);
+                String buttonStr = getString(R.string.ActionButtonWc);
+                actionIntentClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr, imgActionWc, imgGoRoom2);            }
         });
                     //Pass Room2
         imgGoRoom2.setOnClickListener(new View.OnClickListener() {
@@ -220,39 +113,15 @@ public class Room1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // Show and close textEvent
-                showEvent(true,textEvent, X);
-                textEvent.setText(R.string.ActionWorkplan);
-                buttonEvent.setVisibility(View.VISIBLE);
-                buttonEvent.setText(R.string.eventRead);
-
-                buttonEvent.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        textEvent.setText(R.string.ActionButtonWorkplanNull);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-
-                        //Method drop counter and verify if dead
-                        if (isDead()) {
-                            // Intent
-                            Intent goTodead = new Intent(Room1.this, DeadActivity.class);
-                            Room1.this.startActivity(goTodead);
-                        }
-                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-                    }
-                });
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false,textEvent, X);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                    }
-                });
+                String actionStr = getString(R.string.ActionWorkplan);
+                String eventStr = getString(R.string.eventRead);
+                String buttonStr = getString(R.string.ActionButtonWorkplanNull);
+                actionClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr);
             }
         });
     }
 
+    ///////////////////////////////METHOD/////////////////////////////////////////////////////////////////////
 
     public boolean isDead() {
         PlayerSingleton.getInstance().setCounter(PlayerSingleton.getInstance().getCounter()-1);
@@ -291,7 +160,7 @@ public class Room1 extends AppCompatActivity {
     }
 
     public void actionClick(final TextView textEvent, final Button X, final Button buttonEvent, final TextView textCounter, String actionStr, String eventStr, final String buttonStr) {
-        // Show and close textEvent
+
         showEvent(true,textEvent, X);
         textEvent.setText(actionStr);
         buttonEvent.setVisibility(View.VISIBLE);
@@ -302,9 +171,9 @@ public class Room1 extends AppCompatActivity {
             public void onClick(View v) {
                 textEvent.setText(buttonStr);
                 buttonEvent.setVisibility(View.INVISIBLE);
-                //Method drop counter and verify if dead
+
                 if (isDead()) {
-                    // Intent
+
                     Intent goTodead = new Intent(Room1.this, DeadActivity.class);
                     Room1.this.startActivity(goTodead);
                 }
@@ -321,4 +190,64 @@ public class Room1 extends AppCompatActivity {
         });
     }
 
+    public void actionIntentClick(final TextView textEvent, final Button X, final Button buttonEvent, final TextView textCounter,
+                                  String actionStr, String eventStr, final String buttonStr, final ImageView imgActionWc,
+                                  final ImageView imgGoRoom2) {
+
+        showEvent(true,textEvent, X);
+        textEvent.setText(actionStr);
+        buttonEvent.setVisibility(View.VISIBLE);
+        buttonEvent.setText(eventStr);
+
+        buttonEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textEvent.setText(buttonStr);
+                buttonEvent.setVisibility(View.INVISIBLE);
+
+                if (isDead()) {
+
+                    Intent goTodead = new Intent(Room1.this, DeadActivity.class);
+                    Room1.this.startActivity(goTodead);
+                }
+                textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+                imgActionWc.setVisibility(View.INVISIBLE);
+                imgGoRoom2.setVisibility(View.VISIBLE);
+            }
+        });
+
+        X.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(false,textEvent, X);
+                buttonEvent.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
+    public void room1Verify(final TextView textEvent, final Button X, ImageView imgActionWc,
+                            ImageView imgGoRoom2, ImageView keyDoor) {
+        if (isDeadVerify()) {
+            // Intent
+            Intent goTodead = new Intent(Room1.this, DeadActivity.class);
+            Room1.this.startActivity(goTodead);
+        }
+
+        if (!PlayerSingleton.getInstance().isR1isVisited()) {
+
+            showEvent(true,textEvent, X);
+            textEvent.setText(R.string.Intro);
+
+            X.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showEvent(false,textEvent, X);
+                }
+            });
+        } else {
+            imgActionWc.setVisibility(View.INVISIBLE);
+            imgGoRoom2.setVisibility(View.VISIBLE);
+        }
+        keyDoorVerify(keyDoor);
+    }
 }

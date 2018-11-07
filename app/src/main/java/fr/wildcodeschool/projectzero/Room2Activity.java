@@ -43,33 +43,10 @@ public class Room2Activity extends AppCompatActivity {
         final ImageView keyDoor = findViewById(R.id.image_keydoor);
         final ImageView imgGoRoom3 = findViewById(R.id.image_intent_r3);
 
-        keyDoorVerify(keyDoor);
-        if (PlayerSingleton.getInstance().isKeydoor()) {
-            imgActionShelfR2.setVisibility(View.INVISIBLE);
-        }
+        //TODO make actionLocker2, Rack1and2
 
-        if (isDeadVerify()) {
-            // Intent
-            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
-            Room2Activity.this.startActivity(goTodead);
-        }
-        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-
-        if (!PlayerSingleton.getInstance().isR2isVisited()) {
-            showEvent(true, textEvent, X);
-            textEvent.setText(R.string.enterRoom2);
-            X.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showEvent(false, textEvent, X);
-                }
-            });
-        }
-
-        if (PlayerSingleton.getInstance().isR2AllVisited()) {
-            isVisited(true, background);
-            imgActionDoorLockerR2.setVisibility(View.INVISIBLE);
-        }
+        //Verify player progress
+        room2Verify(textCounter, imgActionShelfR2,keyDoor, textEvent, X, imgActionDoorLockerR2, background, imgActionWoodDoorR2, imgGoRoom3);
 
         imgObsLockerR2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,260 +71,79 @@ public class Room2Activity extends AppCompatActivity {
         imgActionLocker1R2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showEvent(true, textEvent, X);
-                textEvent.setText(getString(R.string.actionLocker1) + getString(R.string.actionLocker1_1));
-                buttonEvent.setVisibility(View.VISIBLE);
-                buttonEvent.setText(R.string.eventOpen);
 
-                buttonEvent.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        textEvent.setText(R.string.buttonActionLocker1);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-
-                        if (isDead()) {
-                            // Intent
-                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
-                            Room2Activity.this.startActivity(goTodead);
-                        }
-                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-
-                        if (isDead()) {
-                            // Intent
-                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
-                            Room2Activity.this.startActivity(goTodead);
-                        }
-                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-                    }
-                });
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false, textEvent, X);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                    }
-                });
+                String actionStr = getString(R.string.actionLocker1);
+                String eventStr = getString(R.string.eventOpen);
+                String buttonStr = getString(R.string.buttonActionLocker1);
+                action2Click(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr);
             }
         });
 
         imgActionDoorLockerR2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showEvent(true, textEvent, X);
-                textEvent.setText(R.string.porteR2);
-                buttonEvent.setVisibility(View.VISIBLE);
-                buttonEvent.setText(R.string.eventOpen);
 
-                buttonEvent.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        textEvent.setText(R.string.ButtonActionDoorR2);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                        isVisited(true, background);
-                        PlayerSingleton.getInstance().setR2AllVisited(true);
-
-                        //Method drop counter and verify if dead
-                        if (isDead()) {
-                            // Intent
-                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
-                            Room2Activity.this.startActivity(goTodead);
-                        }
-                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-                    }
-                });
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false, textEvent, X);
-                        imgActionDoorLockerR2.setVisibility(View.INVISIBLE);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                    }
-                });
+                String actionStr = getString(R.string.porteR2);
+                String eventStr = getString(R.string.eventOpen);
+                String buttonStr = getString(R.string.ButtonActionDoorR2);
+                actionLockerClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr, imgActionDoorLockerR2);
             }
         });
 
         imgActionTable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showEvent(true, textEvent, X);
-                textEvent.setText(R.string.actionTable);
-                buttonEvent.setVisibility(View.VISIBLE);
-                buttonEvent.setText(R.string.eventExploration);
 
-                buttonEvent.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        textEvent.setText(R.string.buttonAtcionTable);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-
-                        //Method drop counter and verify if dead
-                        if (isDead()) {
-                            // Intent
-                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
-                            Room2Activity.this.startActivity(goTodead);
-                        }
-                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-                    }
-                });
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false, textEvent, X);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                    }
-                });
-
+                String actionStr = getString(R.string.actionTable);
+                String eventStr = getString(R.string.eventExploration);
+                String buttonStr = getString(R.string.buttonAtcionTable);
+                actionClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr);
             }
         });
 
         imgActionTools.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showEvent(true, textEvent, X);
-                textEvent.setText(R.string.actionTools);
-                buttonEvent.setVisibility(View.VISIBLE);
-                buttonEvent.setText(R.string.eventExploration);
 
-                buttonEvent.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        textEvent.setText(R.string.buttonActonTols);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-
-                        //Method drop counter and verify if dead
-                        if (isDead()) {
-                            // Intent
-                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
-                            Room2Activity.this.startActivity(goTodead);
-                        }
-                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-                    }
-                });
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false, textEvent, X);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                    }
-                });
+                String actionStr = getString(R.string.actionTools);
+                String eventStr = getString(R.string.eventExploration);
+                String buttonStr = getString(R.string.buttonActonTols);
+                actionClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr);
             }
         });
 
         imgActionCarton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showEvent(true, textEvent, X);
-                textEvent.setText(R.string.actionCarton);
-                buttonEvent.setVisibility(View.VISIBLE);
-                buttonEvent.setText(R.string.eventOpen);
 
-                buttonEvent.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        textEvent.setText(R.string.buttonActionCarton);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-
-                        //Method drop counter and verify if dead
-                        if (isDead()) {
-                            // Intent
-                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
-                            Room2Activity.this.startActivity(goTodead);
-                        }
-                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-                    }
-                });
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false, textEvent, X);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                    }
-                });
+                String actionStr = getString(R.string.actionCarton);
+                String eventStr = getString(R.string.eventOpen);
+                String buttonStr = getString(R.string.buttonActionCarton);
+                actionClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr);
             }
         });
 
         imgActionShelfR2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showEvent(true, textEvent, X);
-                textEvent.setText(R.string.ActionShelf);
-                buttonEvent.setVisibility(View.VISIBLE);
-                buttonEvent.setText(R.string.eventOpen);
 
-                buttonEvent.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        textEvent.setText(R.string.findKeydoor);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                        PlayerSingleton.getInstance().setKeydoor(true);
-                        keyDoorVerify(keyDoor);
-
-                        //Method drop counter and verify if dead
-                        if (isDead()) {
-                            // Intent
-                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
-                            Room2Activity.this.startActivity(goTodead);
-                        }
-                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-                    }
-                });
-
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false, textEvent, X);
-                        imgActionShelfR2.setVisibility(View.INVISIBLE);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                    }
-                });
+                String actionStr = getString(R.string.ActionShelf);
+                String eventStr = getString(R.string.eventOpen);
+                String buttonStr = getString(R.string.findKeydoor);
+                actionKeyClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr, keyDoor, imgActionShelfR2);
             }
         });
 
         imgActionWoodDoorR2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showEvent(true, textEvent, X);
-                textEvent.setText(R.string.actionWooddoor);
-                buttonEvent.setVisibility(View.VISIBLE);
-                buttonEvent.setText(R.string.eventOpen);
 
-                buttonEvent.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        if (!PlayerSingleton.getInstance().isKeydoor()) {
-                            textEvent.setText(R.string.DoorClose);
-                            buttonEvent.setVisibility(View.INVISIBLE);
-                        } else {
-                            textEvent.setText(R.string.DoorOpenKey);
-                            buttonEvent.setVisibility(View.INVISIBLE);
-                            PlayerSingleton.getInstance().setKeydoor(false);
-                            keyDoorVerify(keyDoor);
-                            imgActionWoodDoorR2.setVisibility(View.INVISIBLE);
-                            imgGoRoom3.setVisibility(View.VISIBLE);
-                        }
-
-                        //Method drop counter and verify if dead
-                        if (isDead()) {
-                            // Intent
-                            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
-                            Room2Activity.this.startActivity(goTodead);
-                        }
-                        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
-                    }
-                });
-                X.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showEvent(false, textEvent, X);
-                        buttonEvent.setVisibility(View.INVISIBLE);
-                    }
-                });
+                String actionStr = getString(R.string.actionWooddoor);
+                String eventStr = getString(R.string.eventOpen);
+                String buttonStr = getString(R.string.DoorClose);
+                String buttonStr2 = getString(R.string.DoorOpenKey);
+                actionDoorClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr, buttonStr2,
+                        keyDoor, imgActionWoodDoorR2, imgGoRoom3);
             }
         });
 
@@ -368,9 +164,12 @@ public class Room2Activity extends AppCompatActivity {
         });
     }
 
-    public void isVisited(boolean visited, ConstraintLayout background) {
+    /////////////////////METHOD///////////////////////////////////////////////////////
+
+    public void isVisited(boolean visited, ConstraintLayout background, ImageView imgActionDoorLockerR2) {
         if (visited) {
             background.setBackgroundResource(R.drawable.room2);
+            imgActionDoorLockerR2.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -406,6 +205,218 @@ public class Room2Activity extends AppCompatActivity {
             keyDoor.setVisibility(View.VISIBLE);
         } else {
             keyDoor.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void actionClick(final TextView textEvent, final Button X, final Button buttonEvent, final TextView textCounter, String actionStr, String eventStr, final String buttonStr) {
+        showEvent(true,textEvent, X);
+        textEvent.setText(actionStr);
+        buttonEvent.setVisibility(View.VISIBLE);
+        buttonEvent.setText(eventStr);
+
+        buttonEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textEvent.setText(buttonStr);
+                buttonEvent.setVisibility(View.INVISIBLE);
+
+                if (isDead()) {
+
+                    Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                    Room2Activity.this.startActivity(goTodead);
+                }
+                textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+            }
+        });
+
+        X.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(false,textEvent, X);
+                buttonEvent.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
+    public void action2Click(final TextView textEvent, final Button X, final Button buttonEvent, final TextView textCounter, String actionStr, String eventStr, final String buttonStr) {
+        showEvent(true,textEvent, X);
+        textEvent.setText(actionStr);
+        buttonEvent.setVisibility(View.VISIBLE);
+        buttonEvent.setText(eventStr);
+
+        buttonEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textEvent.setText(buttonStr);
+                buttonEvent.setVisibility(View.INVISIBLE);
+                PlayerSingleton.getInstance().setCounter(PlayerSingleton.getInstance().getCounter() - 1);
+                if (isDead()) {
+
+                    Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                    Room2Activity.this.startActivity(goTodead);
+                }
+                textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+            }
+        });
+
+        X.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(false,textEvent, X);
+                buttonEvent.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
+    public void actionLockerClick(final TextView textEvent, final Button X, final Button buttonEvent, final TextView textCounter,
+                                  String actionStr, String eventStr, final String buttonStr, final ImageView imgActionDoorLockerR2) {
+
+        showEvent(true,textEvent, X);
+        textEvent.setText(actionStr);
+        buttonEvent.setVisibility(View.VISIBLE);
+        buttonEvent.setText(eventStr);
+
+        buttonEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textEvent.setText(buttonStr);
+                buttonEvent.setVisibility(View.INVISIBLE);
+
+                if (isDead()) {
+
+                    Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                    Room2Activity.this.startActivity(goTodead);
+                }
+                textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+                imgActionDoorLockerR2.setVisibility(View.INVISIBLE);
+                PlayerSingleton.getInstance().setR2AllVisited(true);
+
+            }
+        });
+
+        X.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(false,textEvent, X);
+                buttonEvent.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
+    public void actionKeyClick(final TextView textEvent, final Button X, final Button buttonEvent,
+                               final TextView textCounter, String actionStr, String eventStr,
+                               final String buttonStr, final ImageView keyDoor, final ImageView imgActionShelfR2) {
+        showEvent(true,textEvent, X);
+        textEvent.setText(actionStr);
+        buttonEvent.setVisibility(View.VISIBLE);
+        buttonEvent.setText(eventStr);
+
+        buttonEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textEvent.setText(buttonStr);
+                buttonEvent.setVisibility(View.INVISIBLE);
+                PlayerSingleton.getInstance().setKeydoor(true);
+                keyDoorVerify(keyDoor);
+
+                if (isDead()) {
+
+                    Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                    Room2Activity.this.startActivity(goTodead);
+                }
+                textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+            }
+        });
+
+        X.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(false,textEvent, X);
+                buttonEvent.setVisibility(View.INVISIBLE);
+                imgActionShelfR2.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
+    public void actionDoorClick(final TextView textEvent, final Button X, final Button buttonEvent, final TextView textCounter,
+                                  String actionStr, String eventStr, final String buttonStr, final String buttonStr2,
+                                final ImageView keyDoor, final ImageView imgActionWoodDoorR2, final ImageView imgGoRoom3) {
+
+        showEvent(true,textEvent, X);
+        textEvent.setText(actionStr);
+        buttonEvent.setVisibility(View.VISIBLE);
+        buttonEvent.setText(eventStr);
+
+        buttonEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!PlayerSingleton.getInstance().isKeydoor()) {
+                    textEvent.setText(buttonStr);
+                    buttonEvent.setVisibility(View.INVISIBLE);
+                } else {
+                    textEvent.setText(buttonStr2);
+                    buttonEvent.setVisibility(View.INVISIBLE);
+                    PlayerSingleton.getInstance().setKeydoor(false);
+                    keyDoorVerify(keyDoor);
+                    PlayerSingleton.getInstance().setR2OpenDoor(true);
+                    imgActionWoodDoorR2.setVisibility(View.INVISIBLE);
+                    imgGoRoom3.setVisibility(View.VISIBLE);
+                }
+
+                if (isDead()) {
+
+                    Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                    Room2Activity.this.startActivity(goTodead);
+                }
+                textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+            }
+        });
+
+        X.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(false,textEvent, X);
+                buttonEvent.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
+    public void room2Verify(TextView textCounter, ImageView imgActionShelfR2, ImageView keyDoor, final TextView textEvent,
+                            final Button X, ImageView imgActionDoorLockerR2, ConstraintLayout background,
+                            ImageView imgActionWoodDoorR2, ImageView imgGoRoom3) {
+
+        if (isDeadVerify()) {
+            // Intent
+            Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+            Room2Activity.this.startActivity(goTodead);
+        }
+        textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+
+        keyDoorVerify(keyDoor);
+        if (PlayerSingleton.getInstance().isKeydoor()) {
+            imgActionShelfR2.setVisibility(View.INVISIBLE);
+        }
+
+        if (!PlayerSingleton.getInstance().isR2isVisited()) {
+            showEvent(true, textEvent, X);
+            textEvent.setText(R.string.enterRoom2);
+            X.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showEvent(false, textEvent, X);
+                }
+            });
+        }
+
+        if (PlayerSingleton.getInstance().isR2AllVisited()) {
+            isVisited(true, background, imgActionDoorLockerR2);
+        }
+
+        if (PlayerSingleton.getInstance().isR2OpenDoor()) {
+            imgActionShelfR2.setVisibility(View.INVISIBLE);
+            imgActionWoodDoorR2.setVisibility(View.INVISIBLE);
+            imgGoRoom3.setVisibility(View.VISIBLE);
+
         }
     }
 }
