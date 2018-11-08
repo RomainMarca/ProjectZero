@@ -19,7 +19,8 @@
         <activity android:name=".Room1" />
         <activity android:name=".DeadActivity" />
         <activity android:name=".RulesActivity" />
-        <activity android:name=".Room2Activity"></activity>
+        <activity android:name=".Room2Activity" />
+        <activity android:name=".room3Activity"></activity>
     </application>
 
 </manifest>

@@ -7,8 +7,10 @@ class PlayerSingleton {
     private boolean r1isVisited;
     private boolean r2isVisited;
     private boolean r2AllVisited;
+    private boolean r3AllVisited;
     private boolean r2OpenDoor;
     private boolean keydoor;
+    private boolean keyCage;
 
 
     static PlayerSingleton getInstance() {
@@ -21,9 +23,19 @@ class PlayerSingleton {
        r1isVisited = false;
        r2isVisited = false;
        r2AllVisited = false;
+       r3AllVisited = false;
        keydoor= false;
+       keyCage= false;
        r2OpenDoor= false;
     }
+
+    public boolean isKeyCage() { return keyCage; }
+
+    public void setKeyCage(boolean keyCage) { this.keyCage = keyCage; }
+
+    public boolean isR3AllVisited() { return r3AllVisited; }
+
+    public void setR3AllVisited(boolean r3AllVisited) { this.r3AllVisited = r3AllVisited; }
 
     public boolean isR2OpenDoor() { return r2OpenDoor; }
 

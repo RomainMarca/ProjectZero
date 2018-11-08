@@ -23,6 +23,8 @@ public class DeadActivity extends AppCompatActivity {
                 PlayerSingleton.getInstance().setR2AllVisited(false);
                 PlayerSingleton.getInstance().setR2isVisited(false);
                 PlayerSingleton.getInstance().setR1isVisited(false);
+                PlayerSingleton.getInstance().setKeydoor(false);
+                PlayerSingleton.getInstance().setR2OpenDoor(false);
                 Intent goToMain = new Intent(DeadActivity.this , MainActivity.class);
                 DeadActivity.this.startActivity(goToMain);
             }

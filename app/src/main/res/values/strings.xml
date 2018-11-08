@@ -43,4 +43,7 @@
     <string name="buttonActonTols">Les outils sont tous cassés et rien ne semble utile.</string>
     <string name="actionCarton">Des cartons sont entassés dans le coin de la pîèce. Un carton posé tout droit semble un peu ouvert.</string>
     <string name="buttonActionCarton">A l\'interieur vous tombez sur une éffrayante poupée avec une robe imbibée de rouge par du sang. Elle a des clou plantés dans la tête en guise de chevelure et des yeux pris directement sur des humains.</string>
+    <string name="actionNailBoard">Une planche à clou avec une grosse clef pendu.</string>
+    <string name="eventTake">Prendre</string>
+    <string name="buttonActionNailBorad">Vous récuperez la clef.</string>
 </resources>

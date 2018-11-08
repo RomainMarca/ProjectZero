@@ -46,7 +46,8 @@ public class Room2Activity extends AppCompatActivity {
         //TODO make actionLocker2, Rack1and2
 
         //Verify player progress
-        room2Verify(textCounter, imgActionShelfR2,keyDoor, textEvent, X, imgActionDoorLockerR2, background, imgActionWoodDoorR2, imgGoRoom3);
+        room2Verify(textCounter, imgActionShelfR2,keyDoor, textEvent, X, imgActionDoorLockerR2, background, imgActionWoodDoorR2, imgGoRoom3,
+                imgActionTable, imgActionTools, imgActionCarton, imgActionRack2, imgActionRack1);
 
         imgObsLockerR2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +87,9 @@ public class Room2Activity extends AppCompatActivity {
                 String actionStr = getString(R.string.porteR2);
                 String eventStr = getString(R.string.eventOpen);
                 String buttonStr = getString(R.string.ButtonActionDoorR2);
-                actionLockerClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr, imgActionDoorLockerR2);
+                actionLockerClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr,
+                        imgActionDoorLockerR2, background, imgActionTable, imgActionTools, imgActionCarton, imgActionRack2,
+                        imgActionRack1, imgActionShelfR2, imgActionWoodDoorR2);
             }
         });
 
@@ -160,6 +163,21 @@ public class Room2Activity extends AppCompatActivity {
                 PlayerSingleton.getInstance().setR2isVisited(true);
                 Intent goToRoom1 = new Intent(Room2Activity.this, Room1.class);
                 Room2Activity.this.startActivity(goToRoom1);
+            }
+        });
+
+        imgGoRoom3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isDead()) {
+                    // Intent
+                    Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                    Room2Activity.this.startActivity(goTodead);
+                }
+                textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+                PlayerSingleton.getInstance().setR2isVisited(true);  
+                Intent goToRoom3 = new Intent(Room2Activity.this, room3Activity.class);
+                Room2Activity.this.startActivity(goToRoom3);
             }
         });
     }
@@ -270,7 +288,10 @@ public class Room2Activity extends AppCompatActivity {
     }
 
     public void actionLockerClick(final TextView textEvent, final Button X, final Button buttonEvent, final TextView textCounter,
-                                  String actionStr, String eventStr, final String buttonStr, final ImageView imgActionDoorLockerR2) {
+                                  String actionStr, String eventStr, final String buttonStr, final ImageView imgActionDoorLockerR2,
+                                  final ConstraintLayout background, final ImageView imgActionTable, final ImageView imgActionTools,
+                                  final ImageView imgActionCarton, final ImageView imgActionRack2, final ImageView imgActionRack1,
+                                  final ImageView imgActionShelfR2, final ImageView imgActionWoodDoorR2) {
 
         showEvent(true,textEvent, X);
         textEvent.setText(actionStr);
@@ -291,7 +312,14 @@ public class Room2Activity extends AppCompatActivity {
                 textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
                 imgActionDoorLockerR2.setVisibility(View.INVISIBLE);
                 PlayerSingleton.getInstance().setR2AllVisited(true);
-
+                background.setBackgroundResource(R.drawable.room2);
+                imgActionShelfR2.setVisibility(View.VISIBLE);
+                imgActionTable.setVisibility(View.VISIBLE);
+                imgActionTools.setVisibility(View.VISIBLE);
+                imgActionCarton.setVisibility(View.VISIBLE);
+                imgActionRack2.setVisibility(View.VISIBLE);
+                imgActionRack1.setVisibility(View.VISIBLE);
+                imgActionWoodDoorR2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -326,6 +354,7 @@ public class Room2Activity extends AppCompatActivity {
                     Room2Activity.this.startActivity(goTodead);
                 }
                 textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+                imgActionShelfR2.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -334,7 +363,6 @@ public class Room2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 showEvent(false,textEvent, X);
                 buttonEvent.setVisibility(View.INVISIBLE);
-                imgActionShelfR2.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -384,7 +412,9 @@ public class Room2Activity extends AppCompatActivity {
 
     public void room2Verify(TextView textCounter, ImageView imgActionShelfR2, ImageView keyDoor, final TextView textEvent,
                             final Button X, ImageView imgActionDoorLockerR2, ConstraintLayout background,
-                            ImageView imgActionWoodDoorR2, ImageView imgGoRoom3) {
+                            ImageView imgActionWoodDoorR2, ImageView imgGoRoom3, ImageView imgActionTable,
+                            ImageView imgActionTools, ImageView imgActionCarton, ImageView imgActionRack2,
+                            ImageView imgActionRack1) {
 
         if (isDeadVerify()) {
             // Intent
@@ -411,13 +441,19 @@ public class Room2Activity extends AppCompatActivity {
 
         if (PlayerSingleton.getInstance().isR2AllVisited()) {
             isVisited(true, background, imgActionDoorLockerR2);
+            imgActionShelfR2.setVisibility(View.VISIBLE);
+            imgActionTable.setVisibility(View.VISIBLE);
+            imgActionTools.setVisibility(View.VISIBLE);
+            imgActionCarton.setVisibility(View.VISIBLE);
+            imgActionRack2.setVisibility(View.VISIBLE);
+            imgActionRack1.setVisibility(View.VISIBLE);
+            imgActionWoodDoorR2.setVisibility(View.VISIBLE);
         }
 
         if (PlayerSingleton.getInstance().isR2OpenDoor()) {
             imgActionShelfR2.setVisibility(View.INVISIBLE);
             imgActionWoodDoorR2.setVisibility(View.INVISIBLE);
             imgGoRoom3.setVisibility(View.VISIBLE);
-
         }
     }
 }
