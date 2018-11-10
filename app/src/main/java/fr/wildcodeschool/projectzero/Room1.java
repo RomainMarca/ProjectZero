@@ -393,6 +393,12 @@ public class Room1 extends AppCompatActivity {
                 }
             });
         } else {
+
+            if (PlayerSingleton.getInstance().isDoorOpenR3()) {
+                imgGoRoom3.setVisibility(View.VISIBLE);
+                imgActionDoorR3.setVisibility(View.INVISIBLE);
+            }
+
             showEvent(true,textEvent, X);
             textEvent.setText(actionStr2);
             buttonEvent.setVisibility(View.VISIBLE);
@@ -438,6 +444,12 @@ public class Room1 extends AppCompatActivity {
                     Xpadlocks.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
+                            if (PlayerSingleton.getInstance().isDoorOpenR3()) {
+                                imgGoRoom3.setVisibility(View.VISIBLE);
+                                imgActionDoorR3.setVisibility(View.INVISIBLE);
+                            }
+
                             imagePadlocks.setVisibility(View.INVISIBLE);
                             buttonPadlocks.setVisibility(View.INVISIBLE);
                             Xpadlocks.setVisibility(View.INVISIBLE);
@@ -524,10 +536,19 @@ public class Room1 extends AppCompatActivity {
                                etRed3.setVisibility(View.INVISIBLE);
                                buttonRed.setVisibility(View.INVISIBLE);
                                PlayerSingleton.getInstance().setPadlockRedOpen(true);
+                               PlayerSingleton.getInstance().setDoorOpenR3(true);
+
+                               if (isDead()) {
+
+                                   Intent goTodead = new Intent(Room1.this, DeadActivity.class);
+                                   Room1.this.startActivity(goTodead);
+                               }
+                               textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
                            }
                         }
                     });
 
+                    //TODO finir la method, utiliser le singleton doorOpen
                     //imgGoRoom3.setVisibility(View.VISIBLE);
                     //imgActionDoorR3.setVisibility(View.INVISIBLE);
                 }
