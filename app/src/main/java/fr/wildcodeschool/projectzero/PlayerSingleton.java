@@ -9,8 +9,10 @@ class PlayerSingleton {
     private boolean r2AllVisited;
     private boolean r3AllVisited;
     private boolean r2OpenDoor;
+    private boolean r1OpenDoor;
     private boolean keydoor;
     private boolean keyCage;
+    private boolean flagRockDoor;
 
 
     static PlayerSingleton getInstance() {
@@ -19,7 +21,7 @@ class PlayerSingleton {
 
     private PlayerSingleton() {
 
-       counter = 10;
+       counter = 15;
        r1isVisited = false;
        r2isVisited = false;
        r2AllVisited = false;
@@ -27,6 +29,24 @@ class PlayerSingleton {
        keydoor= false;
        keyCage= false;
        r2OpenDoor= false;
+       r1OpenDoor= false;
+       flagRockDoor= false;
+    }
+
+    public boolean isFlagRockDoor() {
+        return flagRockDoor;
+    }
+
+    public void setFlagRockDoor(boolean flagRockDoor) {
+        this.flagRockDoor = flagRockDoor;
+    }
+
+    public boolean isR1OpenDoor() {
+        return r1OpenDoor;
+    }
+
+    public void setR1OpenDoor(boolean r1OpenDoor) {
+        this.r1OpenDoor = r1OpenDoor;
     }
 
     public boolean isKeyCage() { return keyCage; }

@@ -42,12 +42,13 @@ public class Room2Activity extends AppCompatActivity {
         final ImageView imgActionRack1 = findViewById(R.id.image_rack);
         final ImageView keyDoor = findViewById(R.id.image_keydoor);
         final ImageView imgGoRoom3 = findViewById(R.id.image_intent_r3);
+        final ImageView keyCage = findViewById(R.id.image_keycage);
 
         //TODO make actionLocker2, Rack1and2
 
         //Verify player progress
         room2Verify(textCounter, imgActionShelfR2,keyDoor, textEvent, X, imgActionDoorLockerR2, background, imgActionWoodDoorR2, imgGoRoom3,
-                imgActionTable, imgActionTools, imgActionCarton, imgActionRack2, imgActionRack1);
+                imgActionTable, imgActionTools, imgActionCarton, imgActionRack2, imgActionRack1, keyCage);
 
         imgObsLockerR2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +184,12 @@ public class Room2Activity extends AppCompatActivity {
     }
 
     /////////////////////METHOD///////////////////////////////////////////////////////
+
+
+    @Override
+    public void onBackPressed() {
+        //Polymorphisme. Vide la méthode onBackPressed pour empêcher son utilisation pendant la partie
+    }
 
     public void isVisited(boolean visited, ConstraintLayout background, ImageView imgActionDoorLockerR2) {
         if (visited) {
@@ -414,7 +421,7 @@ public class Room2Activity extends AppCompatActivity {
                             final Button X, ImageView imgActionDoorLockerR2, ConstraintLayout background,
                             ImageView imgActionWoodDoorR2, ImageView imgGoRoom3, ImageView imgActionTable,
                             ImageView imgActionTools, ImageView imgActionCarton, ImageView imgActionRack2,
-                            ImageView imgActionRack1) {
+                            ImageView imgActionRack1, ImageView keyCage) {
 
         if (isDeadVerify()) {
             // Intent
@@ -454,6 +461,10 @@ public class Room2Activity extends AppCompatActivity {
             imgActionShelfR2.setVisibility(View.INVISIBLE);
             imgActionWoodDoorR2.setVisibility(View.INVISIBLE);
             imgGoRoom3.setVisibility(View.VISIBLE);
+        }
+
+        if (PlayerSingleton.getInstance().isKeyCage()) {
+            keyCage.setVisibility(View.VISIBLE);
         }
     }
 }

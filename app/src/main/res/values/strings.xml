@@ -15,13 +15,15 @@
     <string name="ActionDoor">La porte est fermée d\'une lourde chaine avec un gros cadena à serrure.</string>
     <string name="ActionBed">Un lit marqué de taches brunatre.le lit semble pouvoir ce déplacer recemment.</string>
     <string name="ActionWc">Des toilettes d\'une saleté repoussante.il n\'y a pas d\'eau à l\'interieur. il ne semble pas relier a la tuillauterie.</string>
-    <string name="ObsWorkplan">Un plan de travail avec de nombreux papiers epparpillez partout.</string>
-    <string name="ActionWorkplan">Le plan de travail est éloigné. Voulez vous essayez de lire?</string>
-    <string name="ActionButtonWorkplanNull">Le plan de travail est trop éloigné pour lire quoi que ce soit.</string>
+    <string name="ObsWorkplan">Un plan de travail avec de nombreux papiers epparpillez partout. Vous etes trop loin pour pouvoir lire quoi que ce soit.</string>
+    <string name="ActionWorkplan">Des papiers, articles de vieux journaux.</string>
+    <string name="ActionButtonWorkplanNull">A voir</string>
     <string name="eventMove">Déplacer</string>
     <string name="eventOpen">Ouvrir</string>
     <string name="eventRead">Lire</string>
     <string name="eventExploration">Fouiller</string>
+    <string name="eventTake">Prendre</string>
+    <string name="eventPull">Tirer</string>
     <string name="ActionButtonWc">Dans un grincement vous déplacé les toilettes et vous rendez compte que derriere il y a un passage étroit.</string>
     <string name="positionDépart">Un symbole indique la position de départ.</string>
     <string name="actionButtonBed">Vous déplacez le lit. Vous trouvez sur sol un message écrit au doigt avec du sang: \'Je m\'appel Archie Mantat. Je ne sais pas comment je suis arrivé ici. Cela fait 3 jours que je suis là. J\'enttend une femme crier dans la salle à coté. Si vous lisez ce message, dite à ma famille que je les aimes.\'</string>
@@ -44,6 +46,14 @@
     <string name="actionCarton">Des cartons sont entassés dans le coin de la pîèce. Un carton posé tout droit semble un peu ouvert.</string>
     <string name="buttonActionCarton">A l\'interieur vous tombez sur une éffrayante poupée avec une robe imbibée de rouge par du sang. Elle a des clou plantés dans la tête en guise de chevelure et des yeux pris directement sur des humains.</string>
     <string name="actionNailBoard">Une planche à clou avec une grosse clef pendu.</string>
-    <string name="eventTake">Prendre</string>
     <string name="buttonActionNailBorad">Vous récuperez la clef.</string>
+    <string name="buttonActionDoorOpen">Vous utilisez la clef pour ouvrir le cadena.</string>
+    <string name="buttonActionDoorR3part">La poignet semble fonctionner mais la porte est bloqué de l\'autre coté.</string>
+    <string name="actionDoorR3part">Une porte sans serrure.</string>
+    <string name="actionTableR3">Sur une table métalique se trouve un corp calciné.</string>
+    <string name="buttonActionTableR3">Les morceaux se décomposent. Cela vous écoeur.</string>
+    <string name="actionFlag">Un grand drapeau d\'un groupe de hardRock est accrocher au mur.</string>
+    <string name="actionDoorR3">La porte est fermée par 2 cadenas; un rouge est un bleu.</string>
+    <string name="AREVOIR">la porte !!!!!!!</string>
+    <string name="buttonActionFlag">Le drapeau se décroche et vous trouver une porte cachée derrière</string>
 </resources>

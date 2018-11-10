@@ -18,7 +18,6 @@ public class room3Activity extends AppCompatActivity {
 
         final ConstraintLayout background = (ConstraintLayout) findViewById(R.id.constraintLayout);
         //TODO modif background for part
-        //TODO make keyCage in nailBoard
 
         //Metthode arguments showEvent
         final TextView textEvent = findViewById(R.id.text_event);
@@ -29,8 +28,30 @@ public class room3Activity extends AppCompatActivity {
         final TextView textCounter = findViewById(R.id.text_counter3);
         final ImageView imgNailBoard = findViewById(R.id.image_nailboard);
         final ImageView keyCage = findViewById(R.id.image_keycage);
+        final ImageView imgDoorR3Part = findViewById(R.id.image_door_r3part);
+        final ImageView imgTable = findViewById(R.id.image_table_r3);
 
         room3Verify(textCounter, keyCage, imgNailBoard);
+
+        imgDoorR3Part.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String actionStr = getString(R.string.actionDoorR3part);
+                String eventStr = getString(R.string.eventOpen);
+                String buttonStr = getString(R.string.buttonActionDoorR3part);
+                actionClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr);
+            }
+        });
+
+        imgTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String actionStr = getString(R.string.actionTableR3);
+                String eventStr = getString(R.string.eventExploration);
+                String buttonStr = getString(R.string.buttonActionTableR3);
+                actionClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr);
+            }
+        });
 
         imgNailBoard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +81,12 @@ public class room3Activity extends AppCompatActivity {
     }
 
     ////////////////////////////METHOD//////////////////////////////////////////////////////////
+
+
+    @Override
+    public void onBackPressed() {
+        //Polymorphisme. Vide la méthode onBackPressed pour empêcher son utilisation pendant la partie
+    }
 
     public boolean isDead() {
         PlayerSingleton.getInstance().setCounter(PlayerSingleton.getInstance().getCounter() - 1);
