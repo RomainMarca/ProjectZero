@@ -56,4 +56,7 @@
     <string name="actionDoorR3">La porte est fermée par 2 cadenas; un rouge est un bleu.</string>
     <string name="AREVOIR">la porte !!!!!!!</string>
     <string name="buttonActionFlag">Le drapeau se décroche et vous trouver une porte cachée derrière</string>
+    <string name="openCadenas2">Ouvrir les 2 cadenas</string>
+    <string name="padlockClose">Le cadenas ne s\'ouvre pas.</string>
+    <string name="x">X</string>
 </resources>

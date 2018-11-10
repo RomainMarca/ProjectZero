@@ -13,6 +13,8 @@ class PlayerSingleton {
     private boolean keydoor;
     private boolean keyCage;
     private boolean flagRockDoor;
+    private boolean padlockRedOpen;
+    private boolean padlockBlueOpen;
 
 
     static PlayerSingleton getInstance() {
@@ -31,6 +33,24 @@ class PlayerSingleton {
        r2OpenDoor= false;
        r1OpenDoor= false;
        flagRockDoor= false;
+       padlockRedOpen= false;
+       padlockBlueOpen= false;
+    }
+
+    public boolean isPadlockBlueOpen() {
+        return padlockBlueOpen;
+    }
+
+    public void setPadlockBlueOpen(boolean padlockBlueOpen) {
+        this.padlockBlueOpen = padlockBlueOpen;
+    }
+
+    public boolean isPadlockRedOpen() {
+        return padlockRedOpen;
+    }
+
+    public void setPadlockRedOpen(boolean padlockRedOpen) {
+        this.padlockRedOpen = padlockRedOpen;
     }
 
     public boolean isFlagRockDoor() {

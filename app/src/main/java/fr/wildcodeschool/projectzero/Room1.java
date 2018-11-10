@@ -1,12 +1,17 @@
 package fr.wildcodeschool.projectzero;
 
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class Room1 extends AppCompatActivity {
@@ -37,6 +42,19 @@ public class Room1 extends AppCompatActivity {
         final ImageView imgActionRack2 = findViewById(R.id.image_rack2_r1);
         final ImageView imgActionRack3 = findViewById(R.id.image_rack3_r1);
         final ImageView imgGoRoom3 = findViewById(R.id.image_intent_r3);
+        final ImageView padlockRed = findViewById(R.id.cadenas_rouge);
+        final ImageView padlockBlue = findViewById(R.id.cadenas_bleu);
+        final EditText etRed1 = findViewById(R.id.et_r_1);
+        final EditText etRed2 = findViewById(R.id.et_r_2);
+        final EditText etRed3 = findViewById(R.id.et_r_3);
+        final EditText etBlue1 = findViewById(R.id.et_b_1);
+        final EditText etBlue2 = findViewById(R.id.et_b_2);
+        final EditText etBlue3 = findViewById(R.id.et_b_3);
+        final ImageButton buttonRed = findViewById(R.id.imageButton_r);
+        final ImageButton buttonBlue = findViewById(R.id.imageButton_b);
+        final ImageView imagePadlocks = findViewById(R.id.Image_padlocks);
+        final ImageButton buttonPadlocks  = findViewById(R.id.imageButton_success);
+        final Button Xpadlocks  = findViewById(R.id.button_X_padlock);
 
         //view on Action counter
         final TextView textCounter = (TextView) findViewById(R.id.text_action);
@@ -45,6 +63,7 @@ public class Room1 extends AppCompatActivity {
         //TODO resize Icons -directly on Inkscape.
         //TODO make firebase for log user and save advanced or shared preferencese...
         //TODO make rest of action on room1
+        //TODO make flag draw
 
         //TODO for test
         PlayerSingleton.getInstance().setKeyCage(true);
@@ -82,7 +101,8 @@ public class Room1 extends AppCompatActivity {
                 String buttonStr = getString(R.string.buttonActionFlag);
                 String buttonStr2 = getString(R.string.AREVOIR);
                 actionFlagClick(textEvent, buttonEvent, X, actionStr, actionStr2, buttonStr, eventStr, eventStr2, buttonStr2,
-                        textCounter, imgGoRoom3, imgActionDoorR3);
+                        textCounter, imgGoRoom3, imgActionDoorR3, padlockRed, etRed1, etRed2, etRed3, buttonRed, padlockBlue, etBlue1,
+                        etBlue2, etBlue3, buttonBlue, imagePadlocks, buttonPadlocks, Xpadlocks);
             }
         });
                                             //Icon Action
@@ -345,7 +365,11 @@ public class Room1 extends AppCompatActivity {
 
     public void actionFlagClick(final TextView textEvent, final Button buttonEvent, final Button X, String actionStr,
                                 String actionStr2, final String buttonStr, String eventStr, String eventStr2, final String buttonStr2,
-                                final TextView textCounter, final ImageView imgGoRoom3, final ImageView imgActionDoorR3) {
+                                final TextView textCounter, final ImageView imgGoRoom3, final ImageView imgActionDoorR3,
+                                final ImageView padlockRed, final EditText etRed1, final EditText etRed2, final EditText etRed3,
+                                final ImageButton buttonRed, final ImageView padlockBlue, final EditText etBlue1, final EditText etBlue2,
+                                final EditText etBlue3, final ImageButton buttonBlue, final ImageView imagePadlocks,
+                                final ImageButton buttonPadlocks, final Button Xpadlocks) {
 
         if(!PlayerSingleton.getInstance().isFlagRockDoor()) {
             showEvent(true,textEvent, X);
@@ -377,12 +401,135 @@ public class Room1 extends AppCompatActivity {
             buttonEvent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    textEvent.setText(buttonStr2);
-                    buttonEvent.setVisibility(View.INVISIBLE);
 
-                    //TODO  make Edit text for the blue code and red code + boolean in Singelton case of success.
-                    imgGoRoom3.setVisibility(View.VISIBLE);
-                    imgActionDoorR3.setVisibility(View.INVISIBLE);
+                    buttonEvent.setVisibility(View.INVISIBLE);
+                    textEvent.setVisibility(View.INVISIBLE);
+                    X.setVisibility(View.INVISIBLE);
+                    imagePadlocks.setVisibility(View.VISIBLE);
+                    buttonPadlocks.setVisibility(View.VISIBLE);
+                    Xpadlocks.setVisibility(View.VISIBLE);
+                    padlockRed.setVisibility(View.VISIBLE);
+                    etRed1.setVisibility(View.VISIBLE);
+                    etRed2.setVisibility(View.VISIBLE);
+                    etRed3.setVisibility(View.VISIBLE);
+                    padlockBlue.setVisibility(View.VISIBLE);
+                    etBlue1.setVisibility(View.VISIBLE);
+                    etBlue2.setVisibility(View.VISIBLE);
+                    etBlue3.setVisibility(View.VISIBLE);
+                    buttonBlue.setVisibility(View.VISIBLE);
+                    buttonRed.setVisibility(View.VISIBLE);
+
+                    if (PlayerSingleton.getInstance().isPadlockRedOpen()) {
+                        padlockRed.setImageDrawable(getResources().getDrawable(R.drawable.key_cage));
+                        etRed1.setVisibility(View.INVISIBLE);
+                        etRed2.setVisibility(View.INVISIBLE);
+                        etRed3.setVisibility(View.INVISIBLE);
+                        buttonRed.setVisibility(View.INVISIBLE);
+                    }
+
+                    if (PlayerSingleton.getInstance().isPadlockBlueOpen()) {
+                        padlockBlue.setImageDrawable(getResources().getDrawable(R.drawable.key_cage));
+                        etBlue1.setVisibility(View.INVISIBLE);
+                        etBlue2.setVisibility(View.INVISIBLE);
+                        etBlue3.setVisibility(View.INVISIBLE);
+                        buttonBlue.setVisibility(View.INVISIBLE);
+                    }
+
+                    Xpadlocks.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            imagePadlocks.setVisibility(View.INVISIBLE);
+                            buttonPadlocks.setVisibility(View.INVISIBLE);
+                            Xpadlocks.setVisibility(View.INVISIBLE);
+                            padlockRed.setVisibility(View.INVISIBLE);
+                            etRed1.setVisibility(View.INVISIBLE);
+                            etRed2.setVisibility(View.INVISIBLE);
+                            etRed3.setVisibility(View.INVISIBLE);
+                            padlockBlue.setVisibility(View.INVISIBLE);
+                            etBlue1.setVisibility(View.INVISIBLE);
+                            etBlue2.setVisibility(View.INVISIBLE);
+                            etBlue3.setVisibility(View.INVISIBLE);
+                            buttonBlue.setVisibility(View.INVISIBLE);
+                            buttonRed.setVisibility(View.INVISIBLE);
+                        }
+                    });
+
+                    buttonRed.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String et1 = etRed1.getText().toString();
+                            String et2 = etRed2.getText().toString();
+                            String et3 = etRed3.getText().toString();
+
+                            if (checkRedpadlock(et1, et2, et3)) {
+                                padlockRed.setImageDrawable(getResources().getDrawable(R.drawable.key_cage));
+                                etRed1.setVisibility(View.INVISIBLE);
+                                etRed2.setVisibility(View.INVISIBLE);
+                                etRed3.setVisibility(View.INVISIBLE);
+                                buttonRed.setVisibility(View.INVISIBLE);
+                                PlayerSingleton.getInstance().setPadlockRedOpen(true);
+                            } else {
+                                Toast.makeText(Room1.this, getString(R.string.padlockClose), Toast.LENGTH_SHORT).show();
+                            }
+
+                            if (isDead()) {
+
+                                Intent goTodead = new Intent(Room1.this, DeadActivity.class);
+                                Room1.this.startActivity(goTodead);
+                            }
+                            textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+                        }
+                    });
+
+                    buttonBlue.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String et1 = etBlue1.getText().toString();
+                            String et2 = etBlue2.getText().toString();
+                            String et3 = etBlue3.getText().toString();
+
+                            if (checkBluepadlock(et1, et2, et3)) {
+                                padlockBlue.setImageDrawable(getResources().getDrawable(R.drawable.key_cage));
+                                etBlue1.setVisibility(View.INVISIBLE);
+                                etBlue2.setVisibility(View.INVISIBLE);
+                                etBlue3.setVisibility(View.INVISIBLE);
+                                buttonBlue.setVisibility(View.INVISIBLE);
+                                PlayerSingleton.getInstance().setPadlockBlueOpen(true);
+                            } else {
+                                Toast.makeText(Room1.this, getString(R.string.padlockClose), Toast.LENGTH_SHORT).show();
+                            }
+
+                            if (isDead()) {
+
+                                Intent goTodead = new Intent(Room1.this, DeadActivity.class);
+                                Room1.this.startActivity(goTodead);
+                            }
+                            textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+                        }
+                    });
+
+                    buttonPadlocks.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                           if (checkBluepadlock("2","4","5") && checkRedpadlock("1", "3", "4")) {
+                               padlockBlue.setImageDrawable(getResources().getDrawable(R.drawable.key_cage));
+                               etBlue1.setVisibility(View.INVISIBLE);
+                               etBlue2.setVisibility(View.INVISIBLE);
+                               etBlue3.setVisibility(View.INVISIBLE);
+                               buttonBlue.setVisibility(View.INVISIBLE);
+                               PlayerSingleton.getInstance().setPadlockBlueOpen(true);
+                               padlockRed.setImageDrawable(getResources().getDrawable(R.drawable.key_cage));
+                               etRed1.setVisibility(View.INVISIBLE);
+                               etRed2.setVisibility(View.INVISIBLE);
+                               etRed3.setVisibility(View.INVISIBLE);
+                               buttonRed.setVisibility(View.INVISIBLE);
+                               PlayerSingleton.getInstance().setPadlockRedOpen(true);
+                           }
+                        }
+                    });
+
+                    //imgGoRoom3.setVisibility(View.VISIBLE);
+                    //imgActionDoorR3.setVisibility(View.INVISIBLE);
                 }
             });
         }
@@ -396,4 +543,19 @@ public class Room1 extends AppCompatActivity {
         });
     }
 
+    public Boolean checkBluepadlock(String et1, String et2, String et3) {
+        if (et1.equals("2") && et2.equals("4") && et3.equals("5")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkRedpadlock(String et1, String et2, String et3) {
+        if (et1.equals("1") && et2.equals("3") && et3.equals("4")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
