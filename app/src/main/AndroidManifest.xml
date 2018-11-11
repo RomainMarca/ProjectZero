@@ -16,10 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Room1" />
-        <activity android:name=".DeadActivity" />
-        <activity android:name=".RulesActivity" />
-        <activity android:name=".Room2Activity"></activity>
+        <activity
+            android:name=".Room1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DeadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RulesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Room2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".room3Activity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".DiaryActivity"></activity>
     </application>
 
 </manifest>

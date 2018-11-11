@@ -19,15 +19,23 @@ public class DeadActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                PlayerSingleton.getInstance().setCounter(10);
+                PlayerSingleton.getInstance().setCounter(15);
                 PlayerSingleton.getInstance().setR2AllVisited(false);
                 PlayerSingleton.getInstance().setR2isVisited(false);
+                PlayerSingleton.getInstance().setR3AllVisited(false);
                 PlayerSingleton.getInstance().setR1isVisited(false);
+                PlayerSingleton.getInstance().setKeydoor(false);
+                PlayerSingleton.getInstance().setKeyCage(false);
+                PlayerSingleton.getInstance().setR2OpenDoor(false);
+                PlayerSingleton.getInstance().setR1OpenDoor(false);
+                PlayerSingleton.getInstance().setFlagRockDoor(false);
+                PlayerSingleton.getInstance().setPadlockRedOpen(false);
+                PlayerSingleton.getInstance().setPadlockBlueOpen(false);
+                PlayerSingleton.getInstance().setDoorOpenR3(false);
+
                 Intent goToMain = new Intent(DeadActivity.this , MainActivity.class);
                 DeadActivity.this.startActivity(goToMain);
             }
         });
-
-
     }
 }
