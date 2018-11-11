@@ -29,6 +29,10 @@ public class DeadActivity extends AppCompatActivity {
                 PlayerSingleton.getInstance().setR2OpenDoor(false);
                 PlayerSingleton.getInstance().setR1OpenDoor(false);
                 PlayerSingleton.getInstance().setFlagRockDoor(false);
+                PlayerSingleton.getInstance().setPadlockRedOpen(false);
+                PlayerSingleton.getInstance().setPadlockBlueOpen(false);
+                PlayerSingleton.getInstance().setDoorOpenR3(false);
+
                 Intent goToMain = new Intent(DeadActivity.this , MainActivity.class);
                 DeadActivity.this.startActivity(goToMain);
             }

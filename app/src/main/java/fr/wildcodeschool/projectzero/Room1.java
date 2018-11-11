@@ -63,13 +63,14 @@ public class Room1 extends AppCompatActivity {
         //TODO resize Icons -directly on Inkscape.
         //TODO make firebase for log user and save advanced or shared preferencese...
         //TODO make rest of action on room1
-        //TODO make flag draw
+        //TODO make flags draws
+        //TODO make Workplan, finalDoor, Workplan2, Rack1, rack 2, rack3
 
-        //TODO for test
+        //for test
         PlayerSingleton.getInstance().setKeyCage(true);
 
         //Verify player progress
-        room1Verify(textEvent, X, imgActionWc, imgGoRoom2, keyDoor, keyCage);
+        room1Verify(textEvent, X, imgActionWc, imgGoRoom2, keyDoor, keyCage, imgGoRoom3, imgActionDoorR3);
 
         imgObsWorkpan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -281,7 +282,7 @@ public class Room1 extends AppCompatActivity {
     }
 
     public void room1Verify(final TextView textEvent, final Button X, ImageView imgActionWc,
-                            ImageView imgGoRoom2, ImageView keyDoor, ImageView keyCage) {
+                            ImageView imgGoRoom2, ImageView keyDoor, ImageView keyCage, ImageView imgGoRoom3, ImageView imgActionDoorR3) {
         if (isDeadVerify()) {
             // Intent
             Intent goTodead = new Intent(Room1.this, DeadActivity.class);
@@ -308,6 +309,18 @@ public class Room1 extends AppCompatActivity {
         if (PlayerSingleton.getInstance().isKeyCage()) {
             keyCage.setVisibility(View.VISIBLE);
         }
+
+        if (PlayerSingleton.getInstance().isDoorOpenR3()) {
+            imgGoRoom3.setVisibility(View.VISIBLE);
+            imgActionDoorR3.setVisibility(View.INVISIBLE);
+        }
+
+        if (PlayerSingleton.getInstance().isPadlockBlueOpen() && PlayerSingleton.getInstance().isPadlockRedOpen()) {
+            imgGoRoom3.setVisibility(View.VISIBLE);
+            imgActionDoorR3.setVisibility(View.INVISIBLE);
+        }
+
+
     }
 
     public void actionDoorClick(final TextView textEvent, final Button X, final Button buttonEvent, final TextView textCounter,
@@ -547,10 +560,6 @@ public class Room1 extends AppCompatActivity {
                            }
                         }
                     });
-
-                    //TODO finir la method, utiliser le singleton doorOpen
-                    //imgGoRoom3.setVisibility(View.VISIBLE);
-                    //imgActionDoorR3.setVisibility(View.INVISIBLE);
                 }
             });
         }

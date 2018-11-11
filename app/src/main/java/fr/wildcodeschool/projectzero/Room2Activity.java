@@ -13,8 +13,6 @@ import android.widget.TextView;
 public class Room2Activity extends AppCompatActivity {
 
 
-    //TODO make the background complete for build in room2.xml
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
