@@ -3,6 +3,7 @@ package fr.wildcodeschool.projectzero;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.drawable.Drawable;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -55,6 +56,7 @@ public class Room1 extends AppCompatActivity {
         final ImageView imagePadlocks = findViewById(R.id.Image_padlocks);
         final ImageButton buttonPadlocks  = findViewById(R.id.imageButton_success);
         final Button Xpadlocks  = findViewById(R.id.button_X_padlock);
+        final ImageView diary = findViewById(R.id.diary);
 
         //view on Action counter
         final TextView textCounter = (TextView) findViewById(R.id.text_action);
@@ -65,12 +67,13 @@ public class Room1 extends AppCompatActivity {
         //TODO make rest of action on room1
         //TODO make flags draws
         //TODO make Workplan, finalDoor, Workplan2, Rack1, rack 2, rack3
+        //TODO remove isDead for intent
 
         //for test
         PlayerSingleton.getInstance().setKeyCage(true);
 
         //Verify player progress
-        room1Verify(textEvent, X, imgActionWc, imgGoRoom2, keyDoor, keyCage, imgGoRoom3, imgActionDoorR3);
+        room1Verify(textEvent, X, imgActionWc, imgGoRoom2, keyDoor, keyCage, imgGoRoom3, imgActionDoorR3, diary);
 
         imgObsWorkpan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -282,7 +285,8 @@ public class Room1 extends AppCompatActivity {
     }
 
     public void room1Verify(final TextView textEvent, final Button X, ImageView imgActionWc,
-                            ImageView imgGoRoom2, ImageView keyDoor, ImageView keyCage, ImageView imgGoRoom3, ImageView imgActionDoorR3) {
+                            ImageView imgGoRoom2, ImageView keyDoor, ImageView keyCage, ImageView imgGoRoom3,
+                            ImageView imgActionDoorR3, ImageView diary) {
         if (isDeadVerify()) {
             // Intent
             Intent goTodead = new Intent(Room1.this, DeadActivity.class);
@@ -318,6 +322,10 @@ public class Room1 extends AppCompatActivity {
         if (PlayerSingleton.getInstance().isPadlockBlueOpen() && PlayerSingleton.getInstance().isPadlockRedOpen()) {
             imgGoRoom3.setVisibility(View.VISIBLE);
             imgActionDoorR3.setVisibility(View.INVISIBLE);
+        }
+
+        if (PlayerSingleton.getInstance().isDiary()) {
+            diary.setVisibility(View.VISIBLE);
         }
 
 

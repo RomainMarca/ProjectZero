@@ -1,6 +1,7 @@
 package fr.wildcodeschool.projectzero;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,8 +31,9 @@ public class room3Activity extends AppCompatActivity {
         final ImageView keyCage = findViewById(R.id.image_keycage);
         final ImageView imgDoorR3Part = findViewById(R.id.image_door_r3part);
         final ImageView imgTable = findViewById(R.id.image_table_r3);
+        final  ImageView diary = findViewById(R.id.diary);
 
-        room3Verify(textCounter, keyCage, imgNailBoard);
+        room3Verify(textCounter, keyCage, imgNailBoard, diary);
 
         imgDoorR3Part.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +117,7 @@ public class room3Activity extends AppCompatActivity {
         }
     }
 
-    public void room3Verify(TextView textCounter, ImageView keyCage, ImageView imgNailBoard) {
+    public void room3Verify(TextView textCounter, ImageView keyCage, ImageView imgNailBoard, ImageView diary) {
 
         if (isDeadVerify()) {
             // Intent
@@ -127,6 +129,10 @@ public class room3Activity extends AppCompatActivity {
         if (PlayerSingleton.getInstance().isKeyCage()) {
             keyCage.setVisibility(View.VISIBLE);
             imgNailBoard.setVisibility(View.INVISIBLE);
+        }
+
+        if (PlayerSingleton.getInstance().isDiary()) {
+            diary.setVisibility(View.VISIBLE);
         }
     }
 

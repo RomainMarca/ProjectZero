@@ -59,4 +59,10 @@
     <string name="openCadenas2">Ouvrir les 2 cadenas</string>
     <string name="padlockClose">Le cadenas ne s\'ouvre pas.</string>
     <string name="x">X</string>
+    <string name="actionLocker2">Au milieu du bazard vous voyez un petit cahier.</string>
+    <string name="buttonActionLocker2">Vous trouvez ce qui semble être le journal d\'un enfant.</string>
+    <string name="buttonActionLocker22">Vous avez accès au journal dans l\'inventaire en bas à droite.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -20,7 +20,7 @@ public class Room2Activity extends AppCompatActivity {
 
         final ConstraintLayout background = (ConstraintLayout) findViewById(R.id.constraintLayout);
 
-        //Metthode arguments showEvent
+        //Method showEvent
         final TextView textEvent = findViewById(R.id.text_event);
         final Button X = findViewById(R.id.button_hollow);
         final Button buttonEvent = findViewById(R.id.button_action);
@@ -41,12 +41,14 @@ public class Room2Activity extends AppCompatActivity {
         final ImageView keyDoor = findViewById(R.id.image_keydoor);
         final ImageView imgGoRoom3 = findViewById(R.id.image_intent_r3);
         final ImageView keyCage = findViewById(R.id.image_keycage);
+        final ImageView diary = findViewById(R.id.diary);
 
-        //TODO make actionLocker2, Rack1and2
+        //TODO make actionLocker2, Rack1 and 2
 
         //Verify player progress
         room2Verify(textCounter, imgActionShelfR2,keyDoor, textEvent, X, imgActionDoorLockerR2, background, imgActionWoodDoorR2, imgGoRoom3,
-                imgActionTable, imgActionTools, imgActionCarton, imgActionRack2, imgActionRack1, keyCage);
+                imgActionTable, imgActionTools, imgActionCarton, imgActionRack2, imgActionRack1, keyCage, imgObsLockerR2, imgActionLocker2R2,
+                diary);
 
         imgObsLockerR2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +67,18 @@ public class Room2Activity extends AppCompatActivity {
                         imgActionLocker2R2.setVisibility(View.VISIBLE);
                     }
                 });
+            }
+        });
+
+        imgActionLocker2R2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String actionStr = getString(R.string.actionLocker2);
+                String eventStr = getString(R.string.eventRead);
+                String buttonStr = getString(R.string.buttonActionLocker2) +
+                        getString(R.string.buttonActionLocker22);
+                actionDiaryClick(textEvent, X, buttonEvent, textCounter, actionStr, eventStr, buttonStr, diary, imgActionLocker2R2);
             }
         });
 
@@ -177,6 +191,14 @@ public class Room2Activity extends AppCompatActivity {
                 PlayerSingleton.getInstance().setR2isVisited(true);  
                 Intent goToRoom3 = new Intent(Room2Activity.this, room3Activity.class);
                 Room2Activity.this.startActivity(goToRoom3);
+            }
+        });
+
+        diary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToDiary = new Intent(Room2Activity.this, DiaryActivity.class);
+                Room2Activity.this.startActivity(goToDiary);
             }
         });
     }
@@ -419,7 +441,8 @@ public class Room2Activity extends AppCompatActivity {
                             final Button X, ImageView imgActionDoorLockerR2, ConstraintLayout background,
                             ImageView imgActionWoodDoorR2, ImageView imgGoRoom3, ImageView imgActionTable,
                             ImageView imgActionTools, ImageView imgActionCarton, ImageView imgActionRack2,
-                            ImageView imgActionRack1, ImageView keyCage) {
+                            ImageView imgActionRack1, ImageView keyCage, ImageView imgObsLockerR2, ImageView imgActionDoorLocker2R2,
+                            ImageView diary) {
 
         if (isDeadVerify()) {
             // Intent
@@ -464,5 +487,46 @@ public class Room2Activity extends AppCompatActivity {
         if (PlayerSingleton.getInstance().isKeyCage()) {
             keyCage.setVisibility(View.VISIBLE);
         }
+
+        if (PlayerSingleton.getInstance().isDiary()) {
+            imgObsLockerR2.setVisibility(View.INVISIBLE);
+            imgActionDoorLocker2R2.setVisibility(View.INVISIBLE);
+            imgActionDoorLockerR2.setVisibility(View.VISIBLE);
+            diary.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void actionDiaryClick(final TextView textEvent, final Button X, final Button buttonEvent, final TextView textCounter,
+                                 String actionStr, String eventStr, final String buttonStr, final ImageView diary, final ImageView imgActionLocker2R2) {
+        showEvent(true,textEvent, X);
+        textEvent.setText(actionStr);
+        buttonEvent.setVisibility(View.VISIBLE);
+        buttonEvent.setText(eventStr);
+
+        buttonEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textEvent.setText(buttonStr);
+                buttonEvent.setVisibility(View.INVISIBLE);
+                PlayerSingleton.getInstance().setDiary(true);
+                diary.setVisibility(View.VISIBLE);
+
+                if (isDead()) {
+
+                    Intent goTodead = new Intent(Room2Activity.this, DeadActivity.class);
+                    Room2Activity.this.startActivity(goTodead);
+                }
+                textCounter.setText(String.valueOf(PlayerSingleton.getInstance().getCounter()));
+            }
+        });
+
+        X.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEvent(false,textEvent, X);
+                buttonEvent.setVisibility(View.INVISIBLE);
+                imgActionLocker2R2.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 }

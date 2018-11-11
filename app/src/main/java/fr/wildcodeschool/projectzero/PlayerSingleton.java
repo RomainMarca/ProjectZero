@@ -16,6 +16,7 @@ class PlayerSingleton {
     private boolean padlockRedOpen;
     private boolean padlockBlueOpen;
     private boolean doorOpenR3;
+    private boolean diary;
 
 
     static PlayerSingleton getInstance() {
@@ -29,14 +30,23 @@ class PlayerSingleton {
        r2isVisited = false;
        r2AllVisited = false;
        r3AllVisited = false;
-       keydoor= false;
-       keyCage= false;
+       keydoor = false;
+       keyCage = false;
        r2OpenDoor= false;
-       r1OpenDoor= false;
-       flagRockDoor= false;
-       padlockRedOpen= false;
-       padlockBlueOpen= false;
-       doorOpenR3= false;
+       r1OpenDoor = false;
+       flagRockDoor = false;
+       padlockRedOpen = false;
+       padlockBlueOpen = false;
+       doorOpenR3 = false;
+       diary = false;
+    }
+
+    public boolean isDiary() {
+        return diary;
+    }
+
+    public void setDiary(boolean diary) {
+        this.diary = diary;
     }
 
     public boolean isDoorOpenR3() {
